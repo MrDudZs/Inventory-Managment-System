@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="css/main.css" rel="stylesheet" />
-
+    <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         </div>
         <div class="main">
             <main>
-                <div class="formContaienr">
+                <div class="container-sm">
                     <form action="php/Login/loginProcess.php" method="post">
                         <input class="loginInput" type="text" placeholder="Email" name="email" required>
                         <br />
