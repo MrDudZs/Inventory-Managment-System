@@ -19,6 +19,7 @@ body {
     color: var(--main-bg);
     font-weight: 500;
 }
+/* Login Page */
 .container-custom {
     background-color: var(--element-bg);
     border-radius: 20px;
@@ -34,4 +35,46 @@ body {
 }
 .collapsing {
     display: none;
+}
+.form-control:focus {
+    border-color: var(--lighter-bg);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem var(--med-bg);
+}
+/* Clerk Dashboard Page */
+.custom-dash-cols {
+    background-color: var(--element-bg);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+}
+.btn-dashboard {
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 7px;
+}
+.productSoldStat, .averageStockStat {
+    background-color: var(--lighter-bg);
+    padding: 5px;
+    border-radius: 5px;
+}
+.averageStockStat {
+    background-color: var(--med-bg);
+    color: var(--text-bg);
+}
+/* Category Page */
+.catg-cols {
+    margin: 10px;
+    background-color: var(--element-bg);
+    padding: 5px;
+    border-radius: 10px;
+    min-width: 300px;
+}
+.catg-cols:nth-child(even) {
+    background-color: var(--lighter-bg);
+}
+.catg-cols:nth-child(3n) {
+    background-color: var(--med-bg);
+    color: var(--text-bg);
 }
