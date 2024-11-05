@@ -14,20 +14,20 @@
         ?>
         <main>
             <br><br>
-            <div class="container-sm container-custom">
+            <div class="container-sm container-custom" id="loginForm">
                 <h1>LOGIN</h1>
                 <hr>
                 <form action="php/Login/loginProcess.php" method="post">
                     <input class="form-control" id="exampleFormControlInput1" type="email" placeholder="Username" name="email" required>
                     <br />
                     <input class="form-control" id="inputPassword5" type="password" placeholder="Password" name="password" required>
-                    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><u>Forgotten Password?</u></button>
+                    <button class="btn-link" id="resetPassword" type="button"><u>Forgotten Password?</u></button>
                     <br />
                     <input class="btn btn-custom" type="submit" value="LOGIN">
                 </form>
             </div>
-            <br>
-            <div class="collapse container-sm container-custom" id="collapseExample">
+            <div class="collapse container-sm container-custom" id="collapsePassword">
+            <button class="btn-link" id="backtologin" type="button"><< Back to Login</button>
                 <h2>Reset Password</h2>
                 <hr>
                 <form action="php/Register/passwordResetProcess.php" method="post">
@@ -43,5 +43,6 @@
             <br><br>
         </main>
     </body>
+    <script src="js/custom.js"></script>
     <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 </html>
