@@ -22,7 +22,7 @@
                     <br />
                     <input class="form-control" id="inputPassword5" type="password" placeholder="Password" name="password" required>
                     <button class="btn-link" id="resetPassword" type="button"><u>Forgotten Password?</u></button>
-                    <br />
+                    <br /><br>
                     <input class="btn btn-custom" type="submit" value="LOGIN">
                 </form>
             </div>
@@ -43,6 +43,6 @@
             <br><br>
         </main>
     </body>
-    <script src="js/custom.js"></script>
+    <script src="js/ux.js"></script>
     <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 </html>
