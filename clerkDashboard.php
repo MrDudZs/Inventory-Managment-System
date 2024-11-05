@@ -3,6 +3,7 @@
         <div class="col custom-dash-cols">
             <h4>Low Stock:</h4>
             <hr>
+            <?php FindLowStocks() ?>
         </div>
         <div class="col custom-dash-cols">
             <h4>Invoices:</h4>
@@ -39,3 +40,19 @@
         </div>
     </div>
 </div>
+
+<?php
+    function FindLowStocks() {           
+        include 'php/DB-Connection/configDB.php';
+
+        $sql = "SELECT stockName, stockCount, stockType, stockPrice, stockBrand FROM stock WHERE stockCount < 16";
+        $searchResults = $conn->query($sql);
+
+        if ($searchResults->num_rows > 0){
+            while ($row = $searchResults->fetch_assoc()){
+                echo $row['stockBrand'] . ", " . $row['stockName'] . ". Stock left: " . $row['stockCount'] . "<br>";
+            }
+        }
+        $conn->close();
+    }
+?>
