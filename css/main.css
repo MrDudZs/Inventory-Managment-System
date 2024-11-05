@@ -1,8 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+* {
+    font-family: 'Roboto Mono', 'Poppins';
+}
 :root {
     --main-bg: #242424;
     --element-bg: #DDDDDD;
     --text-bg: #FFFFFF;
     --header-bg: #034159;
-    --light-color: #0CF25D;
-    --med-color: #02735E;
+    --lighter-bg: #0CF25D;
+    --med-bg: #02735E;
+}
+body {
+    background-color: var(--main-bg);
+}
+.btn-custom, .btn-custom:hover {
+    background-color: var(--lighter-bg);
+    border-color: var(--lighter-bg);
+    color: var(--main-bg);
+    font-weight: 500;
+}
+.container-custom {
+    background-color: var(--element-bg);
+    border-radius: 20px;
+    padding: 30px 50px;
+    max-width: 500px;
+    min-width: 300px;
+}
+.btn-link {
+    font-size: smaller;
+    border: none;
+    background-color: inherit;
+    text-decoration: none;
+}
+.collapsing {
+    display: none;
 }
