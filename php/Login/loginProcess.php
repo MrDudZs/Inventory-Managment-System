@@ -30,7 +30,7 @@ if ($result->num_rows == 1) {
         $_SESSION['user_email'] = $row['email'];
         
 
-        header("Location: ../../index.php");
+        header("Location: ../../dashboard.php");
         exit();
     } else {
         echo "Invalid password.";
