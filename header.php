@@ -1,5 +1,6 @@
 <head>
     <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">IMS</a>
@@ -16,6 +17,6 @@
     keeping both buttons below(I hope which one is which is obvious) so you just need to copy paste
     */
     ?>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log out</button>
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Log out</button>
 </nav>
