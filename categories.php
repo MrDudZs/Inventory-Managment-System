@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
 
 </head>
     <body>
-        <?php
-
+    <?php
+            include("header.php");
         ?>
         <main>
             <div class="container text-center">
