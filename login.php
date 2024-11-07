@@ -8,7 +8,7 @@
 
     <body>
         <?php
-            include("header.php");
+            include "php/Includes/header.php";
         ?>
         <main>
             <br><br>
@@ -33,7 +33,7 @@
                     <br />
                     <input class="form-control" type="password" name="passwordReset1" placeholder="New Password">
                     <br />
-                    <input class="form-control" type="password" name="passwordReset2" placeholder="Confrim New Password">
+                    <input class="form-control" type="password" name="passwordReset2" placeholder="Confirm New Password">
                     <br />
                     <input class="btn btn-custom" type="submit" value="Reset Password">
                 </form>
