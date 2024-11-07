@@ -19,6 +19,9 @@ body {
     color: var(--main-bg);
     font-weight: 500;
 }
+img{
+    max-height: 400px;
+}
 /* Login Page */
 .container-custom {
     background-color: var(--element-bg);
@@ -82,4 +85,3 @@ body {
 .form-check-input {
     border-color: var(--main-bg)
 }
-

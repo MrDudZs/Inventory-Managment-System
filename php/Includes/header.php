@@ -17,6 +17,6 @@
     keeping both buttons below(I hope which one is which is obvious) so you just need to copy paste
     */
     ?>
-    <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+    <a class="btn btn-success my-2 my-sm-0" href="login.php" role="button">Login</a>
     <button class="btn btn-success my-2 my-sm-0" type="submit">Log out</button>
 </nav>
