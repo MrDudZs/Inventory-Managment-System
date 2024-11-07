@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   `invoiceDate` int NOT NULL,
   `invoiceCustomer` text NOT NULL,
   PRIMARY KEY (`invoiceID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `invoice`
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `saleshistory` (
   `saleCount` int NOT NULL,
   `saleInvoiceID` int NOT NULL,
   PRIMARY KEY (`saleID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `saleshistory`
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `stock` (
   `stockPrice` float NOT NULL,
   `stockBrand` text NOT NULL,
   PRIMARY KEY (`stockID`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `stock`
