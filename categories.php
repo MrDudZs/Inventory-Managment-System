@@ -12,23 +12,23 @@
         ?>
         <main>
             <div class="container text-center">
-                <form action="" method="post" class="category-form">                        
+                <form action="php/Includes/toInventory.php" method="post" class="category-form">                        
                     <div class="row text-center">
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Keyboard">
-                                <input class="form-check-input" type="checkbox" value="Keyboard" id="Keyboard">
+                                <input class="form-check-input" name="category" type="radio" value="Keyboard" id="Keyboard">
                                 Keyboard
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Mouse">
-                                <input class="form-check-input" type="checkbox" value="Mouse" id="Mouse">
+                                <input class="form-check-input" name="category" type="radio" value="Mouse" id="Mouse">
                                 Mouse
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Cables">
-                                <input class="form-check-input" type="checkbox" value="Cables" id="Cables">                            
+                                <input class="form-check-input" name="category" type="radio" value="Cables" id="Cables">                            
                                 Cables
                             </label>
                         </div>
@@ -37,20 +37,29 @@
                     <div class="row text-center">
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Microphone">
-                                <input class="form-check-input" type="checkbox" value="Microphone" id="Microphone">
+                                <input class="form-check-input" name="category" type="radio" value="Microphone" id="Microphone">
                                 Microphone
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Lights">
-                                <input class="form-check-input" type="checkbox" value="Lights" id="Lights">
+                                <input class="form-check-input" name="category" type="radio" value="Lights" id="Lights">
                                 Lighting
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Connectors">
-                                <input class="form-check-input" type="checkbox" value="Connectors" id="Connectors">                            
+                                <input class="form-check-input" name="category" type="radio" value="Connectors" id="Connectors">                            
                                 Connectors
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row text-center">
+                        <div class="form-check col catg-cols">
+                            <label class="form-check-label" for="allProducts">
+                                <input class="form-check-input" name="category" type="radio" value="allProducts" id="allProducts">
+                                All
                             </label>
                         </div>
                     </div>
