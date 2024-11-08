@@ -12,7 +12,7 @@
         ?>
         <main>
             <div class="container text-center">
-                <form action="php/Includes/toInventory.php" method="post" class="category-form">                        
+                <form action="inventory.php" method="post" class="category-form">                        
                     <div class="row text-center">
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Keyboard">

@@ -1,3 +1,7 @@
+<?php
+    $s_category = $_POST['category'];
+    echo $s_category;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +17,10 @@
         ?>
         <main>
             <?php
-                include("php/Includes/toInventory.php");
-                foreach ($products as $row) {
-                    echo $row['stockID'];
-                }
+                // include("php/Includes/toInventory.php");
+                // foreach ($products as $row) {
+                //     echo $row['stockID'];
+                // }
                 // if(isset($_SESSION['product_stock']) && isset($_SESSION['product_category'])) {
                 //     $results = $_SESSION['product_stock'];
                 //     $category = $_SESSION['product_category'];
