@@ -85,3 +85,8 @@ img{
 .form-check-input {
     border-color: var(--main-bg)
 }
+/* Inventory Page */
+.grid-sizing {
+    min-height: 16rem;
+    min-width: 18rem;
+}
