@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include '../DB-Connection/configDB.php';
+    include("../DB-Connection/configDB.php");
 
     $selected_category = $_POST['category'];    
 
@@ -29,7 +29,7 @@
         $resultStock = $stmt->get_result();
 
         if($resultStock->num_rows >= 1) {
-            $products = $resultStock->fetch_all(PDO::FETCH_ASSOC);
+            $products = $resultStock->fetch_all();
             
             $_SESSION['product_stock'] = $products; 
             $_SESSION['product_category'] = $selected_category;
