@@ -11,8 +11,11 @@
             include("php/includes/header.php");
         ?>
         <main>
-            <div class="container text-center">
-                <form action="inventory.php" method="post" class="category-form">                        
+            <br><br>
+            <div class="container">
+                <a href="dashboard.php" class="btn btn-light"><< Back to Dashboard</a>
+                <br><br>
+                <form action="inventory.php" method="post">                        
                     <div class="row text-center">
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Keyboard">

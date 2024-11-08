@@ -30,10 +30,13 @@
         <main>
             <br><br>
             <div class="container">
+                <a href="categories.php" class="btn btn-light"><< Back to Categories</a>
+                <a href="dashboard.php" class="btn btn-light"><< Back to Dashboard</a>
+                <br><br>
                 <div class="row">
                     <?php
                         if (isset($allStock) && $allStock->num_rows > 0) {
-                            echo "<h2 class=\"btn-custom\">All Products</h2>";
+                            echo "<h2 class=\"btn-custom\" style=\"padding: 7px;\">All Products</h2>";
                             while ($row = $allStock->fetch_assoc()) {
                                 echo "<div class=\"col-md-4 mb-4\">";
                                     echo "<div class=\"card grid-sizing\" style=\"width: 18rem; height: 18rem;\">";
@@ -49,10 +52,10 @@
                                 echo "</div>";
                             }
                         } else if (isset($resultStock) && $resultStock->num_rows > 0) {
-                            echo "<h2 class=\"btn-custom\">Product Category: " . $s_category . "</h2>";
+                            echo "<h2 class=\"btn-custom\" style=\"padding: 7px;\">Product Category: " . $s_category . "</h2>";
                             while ($row = $resultStock->fetch_assoc()) {
                                 echo "<div class=\"col-md-4 mb-4\">";
-                                    echo "<div class=\"card\" style=\"width: 20rem;\">";
+                                    echo "<div class=\"card\" style=\"width: 20rem; height: 18rem;\">";
                                         echo "<div class=\"card-body\">";
                                             echo "<h5 class=\"card-title\">" . $row['stockName'] . "</h5>";
                                             echo "<h6 class=\"card-subtitle mb-2 text-body-secondary\">StockID: " . $row['stockID'] . "</h6>";
