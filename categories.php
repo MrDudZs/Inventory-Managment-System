@@ -27,9 +27,9 @@
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
-                            <label class="form-check-label" for="Cables">
-                                <input class="form-check-input" name="category" type="radio" value="Cables" id="Cables">                            
-                                Cables
+                            <label class="form-check-label" for="Headset">
+                                <input class="form-check-input" name="category" type="radio" value="Headset" id="Headset">                            
+                                Headset
                             </label>
                         </div>
                     </div>
@@ -43,14 +43,14 @@
                         </div>
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Lights">
-                                <input class="form-check-input" name="category" type="radio" value="Lights" id="Lights">
-                                Lighting
+                                <input class="form-check-input" name="category" type="radio" value="Speakers" id="Speakers">
+                                Speakers
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Connectors">
-                                <input class="form-check-input" name="category" type="radio" value="Connectors" id="Connectors">                            
-                                Connectors
+                                <input class="form-check-input" name="category" type="radio" value="Monitor" id="Monitor">                            
+                                Monitors
                             </label>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="allProducts">
                                 <input class="form-check-input" name="category" type="radio" value="allProducts" id="allProducts">
-                                All
+                                All Products
                             </label>
                         </div>
                     </div>

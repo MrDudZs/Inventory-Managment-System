@@ -16,26 +16,29 @@
         ?>
         <main>
             <?php
-                // if(isset($_SESSION['product_stock']) && isset($_SESSION['product_category'])) {
-                //     $results = $_SESSION['product_stock'];
-                //     $category = $_SESSION['product_category'];
+                if(isset($_SESSION['product_stock']) && isset($_SESSION['product_category'])) {
+                    $results = $_SESSION['product_stock'];
+                    $category = $_SESSION['product_category'];
 
-                //     if ($category == "allProducts") {
-                //         echo "<h2>All Products</h2>";
-                //     } else {
-                //         echo "<h2>" . $category . "</h2>";
-                //     }
+                    if ($category == "allProducts") {
+                        echo "<h2>All Products</h2>";
+                    } else {
+                        echo "<h2>" . $category . "</h2>";
+                    }
                     
-                //     // Put in a boostrap card.
-                //     foreach ($results as $product) {
-                //         echo $product['productName'];
-                //         echo $product['productManufacture'];
-                //         echo $product['productCount'];
-                //     }
-                // } else {
-                //     header("Location: categories.php");
-                //     exit();
-                // }
+
+                    // Put in a boostrap card.
+                    foreach ($results as $product) {
+                        echo $product['stockID'];
+                        echo $product['stockName'];
+                        echo $product['stockCount'];
+                        echo $product['stockPrice'];
+                        echo $product['stockBrand'];
+                    }
+                } else {
+                    header("Location: categories.php");
+                    exit();
+                }
             ?>
         </main>
     </body>
