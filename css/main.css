@@ -30,6 +30,9 @@ img{
     max-width: 500px;
     min-width: 300px;
 }
+.table-container {
+    background-color: var(--element-bg);
+}
 .btn-link {
     font-size: smaller;
     border: none;
