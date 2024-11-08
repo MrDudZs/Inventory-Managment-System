@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("../DB-Connection/configDB.php");
+    include __DIR__ . '\..\DB-Connection\configDB.php';
 
     $selected_category = $_POST['category'];    
 
