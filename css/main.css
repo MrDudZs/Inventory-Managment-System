@@ -22,6 +22,11 @@ body {
 img{
     max-height: 400px;
 }
+.col-7-5{
+    flex:0 0 auto;
+    flex-wrap: nowrap;
+    width:64%
+}
 /* Login Page */
 .container-custom {
     background-color: var(--element-bg);
