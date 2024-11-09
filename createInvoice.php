@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
     ?>
     <main>
         <br>
-        <div class="container table-container">
+        <div class="container">
             <form action="" method="post" class="productForm">
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <input type="submit" value="Create Invoice" class="btn btn-custom btn-create">
@@ -64,6 +63,19 @@
                             var categ = document.getElementById('selectCateg');
                             function onChange() {
                                 var value = categ.value;
+
+                                if (value == "Select Category:") {
+                                    return;
+                                } else {
+                                    const xmlhttp = new XMLHttpRequest();
+                                    xmlhttp.open("GET", "php/Includes/productList.php?q=" + encodeURIComponent(value), true);
+                                    xmlhttp.onreadystatechange = function() {
+                                        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                                            productDropdown.innerHTML = xmlhttp.responseText;
+                                        }
+                                    }
+                                    xmlhttp.send();
+                                }
                                 console.log("Selected Index: " + value);
                             }
                             categ.onchange = onChange;
@@ -71,9 +83,9 @@
                         </script>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-select" aria-label="Select Product" required>
+                        <select class="form-select" aria-label="Select Product" id="productDropdown" required>
                             <option selected>Select Product:</option>
-                            <option value="Keyboard">Keyboards</option>
+                            
                         </select>
                     </div>
                     <div class="col-md-4">

@@ -38,7 +38,6 @@ addBtn.addEventListener("click", function() {
                 <option value="9">9</option>
             </select>
         </div>
-        <br><br>
     `;
 
     addToForm.appendChild(newProduct);

@@ -42,7 +42,7 @@ img{
 .form-control:focus {
     border-color: var(--lighter-bg);
     outline: 0;
-    box-shadow: 0 0 0 0.1rem rgba(2, 115, 94, 0.3);
+    box-shadow: 0 0 0 0.5rem rgba(2, 115, 94, 0.3);
 }
 /* Clerk Dashboard Page */
 .custom-dash-cols {
