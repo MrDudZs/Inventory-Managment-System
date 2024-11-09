@@ -66,7 +66,10 @@
                             </label>
                         </div>
                     </div>
-                    <input type="submit" value="Search" class="btn btn-custom">
+                    <br>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <input type="submit" value="Search" class="btn btn-custom">
+                    </div>
                 </form>
             </div>
         </main>
