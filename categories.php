@@ -11,25 +11,28 @@
             include("php/includes/header.php");
         ?>
         <main>
-            <div class="container text-center">
-                <form action="" method="post" class="category-form">                        
+            <br><br>
+            <div class="container">
+                <a href="dashboard.php" class="btn btn-light"><< Back to Dashboard</a>
+                <br><br>
+                <form action="inventory.php" method="post">                        
                     <div class="row text-center">
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Keyboard">
-                                <input class="form-check-input" type="checkbox" value="Keyboard" id="Keyboard">
+                                <input class="form-check-input" name="category" type="radio" value="Keyboard" id="Keyboard">
                                 Keyboard
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Mouse">
-                                <input class="form-check-input" type="checkbox" value="Mouse" id="Mouse">
+                                <input class="form-check-input" name="category" type="radio" value="Mouse" id="Mouse">
                                 Mouse
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
-                            <label class="form-check-label" for="Cables">
-                                <input class="form-check-input" type="checkbox" value="Cables" id="Cables">                            
-                                Cables
+                            <label class="form-check-label" for="Headset">
+                                <input class="form-check-input" name="category" type="radio" value="Headset" id="Headset">                            
+                                Headset
                             </label>
                         </div>
                     </div>
@@ -37,24 +40,36 @@
                     <div class="row text-center">
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Microphone">
-                                <input class="form-check-input" type="checkbox" value="Microphone" id="Microphone">
+                                <input class="form-check-input" name="category" type="radio" value="Microphone" id="Microphone">
                                 Microphone
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Lights">
-                                <input class="form-check-input" type="checkbox" value="Lights" id="Lights">
-                                Lighting
+                                <input class="form-check-input" name="category" type="radio" value="Speakers" id="Speakers">
+                                Speakers
                             </label>
                         </div>
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Connectors">
-                                <input class="form-check-input" type="checkbox" value="Connectors" id="Connectors">                            
-                                Connectors
+                                <input class="form-check-input" name="category" type="radio" value="Monitor" id="Monitor">                            
+                                Monitors
                             </label>
                         </div>
                     </div>
-                    <input type="submit" value="Search" class="btn btn-custom">
+
+                    <div class="row text-center">
+                        <div class="form-check col catg-cols">
+                            <label class="form-check-label" for="allProducts">
+                                <input class="form-check-input" name="category" type="radio" value="allProducts" id="allProducts">
+                                All Products
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <input type="submit" value="Search" class="btn btn-custom">
+                    </div>
                 </form>
             </div>
         </main>

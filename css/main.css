@@ -79,9 +79,11 @@ img{
     background-color: var(--med-bg);
     color: var(--text-bg);
 }
-.category-form {
-    margin-top: 100px;
-}
 .form-check-input {
     border-color: var(--main-bg)
+}
+/* Inventory Page */
+.grid-sizing {
+    min-height: 16rem;
+    min-width: 18rem;
 }
