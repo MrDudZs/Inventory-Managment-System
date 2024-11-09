@@ -67,7 +67,7 @@
                                 echo "</div>";
                             }
                         } else {
-                            echo "<h2>No Products Available</h2>";
+                            echo "<h2 class=\"btn-custom\" style=\"padding: 7px;\">No Products Available</h2>";
                         }
                     ?>
                 </div>
