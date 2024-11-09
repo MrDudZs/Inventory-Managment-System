@@ -12,8 +12,11 @@
             include("php/includes/header.php");
         ?>
         <main>
-            <div class="container text-center">
-                <form action="php/Includes/toInventory.php" method="post" class="category-form">                        
+            <br><br>
+            <div class="container">
+                <a href="dashboard.php" class="btn btn-light"><< Back to Dashboard</a>
+                <br><br>
+                <form action="inventory.php" method="post">                        
                     <div class="row text-center">
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Keyboard">
@@ -64,7 +67,10 @@
                             </label>
                         </div>
                     </div>
-                    <input type="submit" value="Search" class="btn btn-custom">
+                    <br>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <input type="submit" value="Search" class="btn btn-custom">
+                    </div>
                 </form>
             </div>
         </main>
