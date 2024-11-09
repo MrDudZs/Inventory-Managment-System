@@ -2,8 +2,12 @@ const addBtn = document.querySelector(".btn-add");
 const addToForm = document.querySelector(".productForm");
 const removeProduct = document.querySelector(".btn-remove");
 removeProduct.style.display = "none";
+const categ = document.getElementById('selectCateg');
+
+let productCount = 0;
 
 addBtn.addEventListener("click", function() {
+    productCount++;
     const newProduct = document.createElement("div");
     newProduct.classList.add("row", "add-product-row");
     newProduct.innerHTML = `
@@ -19,10 +23,10 @@ addBtn.addEventListener("click", function() {
             </select>
         </div>
         <div class="col-md-4">
-            <select class="form-select" aria-label="Select Product" required>
+            <select class="form-select productDropdown" aria-label="Select Product" required>
                 <option selected>Select Product:</option>
-                <option value="Keyboard">Keyboards</option>
-            </select>
+
+=            </select>
         </div>
         <div class="col-md-4">
             <select class="form-select" aria-label="Select Quantity" required>
@@ -38,6 +42,7 @@ addBtn.addEventListener("click", function() {
                 <option value="9">9</option>
             </select>
         </div>
+        <br><br>
     `;
 
     addToForm.appendChild(newProduct);
@@ -57,3 +62,28 @@ removeProduct.addEventListener("click", function() {
     }
 })
 
+function onChange() {
+    var value = categ.value;
+
+    if (value == "Select Category:") {
+        return;
+    } else {
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "php/Includes/productList.php?q=" + value, true);
+        // Function runs everytime the readyState property of the xmlhttp changes
+        xmlhttp.onreadystatechange = function() {
+            // readyState returns the state the xmlhttp is in.
+            // 4 means the operation is complete. State = DONE
+            if (xmlhttp.readyState === 4) {
+                // Outputs the productList.php echos in the select with ID=productDropdown
+                const pDrop = document.querySelector(".productDropdown");
+                pDrop.innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.send();
+    }
+    console.log("Selected Index: " + value);
+}
+
+categ.onchange = onChange;
+onChange();

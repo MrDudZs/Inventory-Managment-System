@@ -4,24 +4,22 @@
     $s_categ = $_REQUEST['q'];
 
     if (isset($s_categ)) {
-        $query = $conn->prepare("SELECT `stockID`, `stockName` FROM `stock` WHERE stockType=?");
+        $query = $conn->prepare("SELECT `stockID`, `stockName`, `stockType` FROM `stock` WHERE stockType=?");
         $query->bind_param("s", $s_categ);
         $query->execute();
         $forList = $query->get_result();
 
-        ob_start();
-
         if (isset($forList) && $forList->num_rows > 0) {
+            echo "<option selected>Select Product:</option>";
             while ($row = $forList->fetch_assoc()) {
-                $sID = htmlspecialchars($row['stockID']);
-                $stockName = htmlspecialchars($row['stockName']);
+                $sID = $row['stockID']; 
+                $stockName = $row['stockName'];
                 echo "<option value=\"$sID\">$stockName</option>";
             }
         } else {
             echo "<option>No Products</option>"; 
         }
 
-        echo trim(ob_get_clean());
     }  
     $conn->close();
 ?>

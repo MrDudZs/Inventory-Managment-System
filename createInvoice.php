@@ -50,7 +50,7 @@
                 <h6 style="padding: 5px; background-color: var(--header-bg); color: var(--text-bg)">Product Orders:</h6>
                 <div class="row">
                     <div class="col-md-4">
-                        <select class="form-select" id="selectCateg" aria-label="Select Product Category" required>
+                        <select class="form-select" id="selectCateg" aria-label="Select Product Category" name="SelectProductCategory" required>
                             <option selected>Select Category:</option>
                             <option value="Keyboard">Keyboards</option>
                             <option value="Mouse">Mouse</option>
@@ -59,37 +59,15 @@
                             <option value="Microphone">Microphone</option>
                             <option value="Headset">Headset</option>
                         </select>
-                        <script type="text/javascript">
-                            var categ = document.getElementById('selectCateg');
-                            function onChange() {
-                                var value = categ.value;
-
-                                if (value == "Select Category:") {
-                                    return;
-                                } else {
-                                    const xmlhttp = new XMLHttpRequest();
-                                    xmlhttp.open("GET", "php/Includes/productList.php?q=" + encodeURIComponent(value), true);
-                                    xmlhttp.onreadystatechange = function() {
-                                        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                                            productDropdown.innerHTML = xmlhttp.responseText;
-                                        }
-                                    }
-                                    xmlhttp.send();
-                                }
-                                console.log("Selected Index: " + value);
-                            }
-                            categ.onchange = onChange;
-                            onChange();
-                        </script>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-select" aria-label="Select Product" id="productDropdown" required>
+                        <select class="form-select productDropdown" aria-label="Select Product" name="SelectProduct" required>
                             <option selected>Select Product:</option>
                             
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-select" aria-label="Select Quantity" required>
+                        <select class="form-select" aria-label="Select Quantity" name="SelectQuantity" required>
                             <option selected>Select Quantity:</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
