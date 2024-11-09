@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +12,15 @@
         include("php/Includes/header.php");
     ?>
     <main>
-        <br><br>
+        <br>
         <div class="container table-container">
-            <form action="" method="post">
+            <form action="" method="post" class="productForm">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <input type="submit" value="Create Invoice" class="btn btn-custom btn-create">
+                </div>
                 <br>
-                <h6>Customer Details:</h6>
+                <h2 class="btn-custom" style="padding: 7px; background-color: var(--med-bg); color: var(--text-bg)">New Invoice</h2>
+                <h6 style="padding: 5px; background-color: var(--header-bg); color: var(--text-bg)">Customer Details:</h6>
                 <div class="row">
                     <div class="col-md-6">
                         <input type="text" class="form-control" id="fullName" placeholder="Full name" aria-label="Full name" required>
@@ -43,10 +48,10 @@
                     </div>
                 </div>
                 <br>
-                <h6>Add Products:</h6>
-                <div class="row add-product-row">
+                <h6 style="padding: 5px; background-color: var(--header-bg); color: var(--text-bg)">Product Orders:</h6>
+                <div class="row">
                     <div class="col-md-4">
-                        <select class="form-select" aria-label="Select Product Category" required>
+                        <select class="form-select" id="selectCateg" aria-label="Select Product Category" required>
                             <option selected>Select Category:</option>
                             <option value="Keyboard">Keyboards</option>
                             <option value="Mouse">Mouse</option>
@@ -55,6 +60,15 @@
                             <option value="Microphone">Microphone</option>
                             <option value="Headset">Headset</option>
                         </select>
+                        <script type="text/javascript">
+                            var categ = document.getElementById('selectCateg');
+                            function onChange() {
+                                var value = categ.value;
+                                console.log("Selected Index: " + value);
+                            }
+                            categ.onchange = onChange;
+                            onChange();
+                        </script>
                     </div>
                     <div class="col-md-4">
                         <select class="form-select" aria-label="Select Product" required>
@@ -78,9 +92,13 @@
                     </div>
                 </div>
                 <br>
-                <button type="button" class="btn btn-custom">Add Product</button>
+                <button type="button" class="btn btn-custom btn-add">Add Product</button>
+                <button type="button" class="btn btn-outline-danger btn-remove">Remove Product</button>
+                <br><br>
             </form>
         </div>
+        <br><br>
     </main>
 </body>
+<script src="js/invoiceForm.js"></script>
 </html>

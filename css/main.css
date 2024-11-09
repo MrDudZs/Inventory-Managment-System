@@ -42,7 +42,7 @@ img{
 .form-control:focus {
     border-color: var(--lighter-bg);
     outline: 0;
-    box-shadow: 0 0 0 0.25rem var(--med-bg);
+    box-shadow: 0 0 0 0.1rem rgba(2, 115, 94, 0.3);
 }
 /* Clerk Dashboard Page */
 .custom-dash-cols {
@@ -89,4 +89,8 @@ img{
 .grid-sizing {
     min-height: 16rem;
     min-width: 18rem;
+}
+/* Create Invoice Form */
+.med-custom-bg {
+    background-color: var(--med-bg);
 }
