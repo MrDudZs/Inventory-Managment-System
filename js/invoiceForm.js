@@ -75,7 +75,7 @@ function onChange() {
             // readyState returns the state the xmlhttp is in.
             // 4 means the operation is complete. State = DONE
             if (xmlhttp.readyState === 4) {
-                // Outputs the productList.php echos in the select with ID=productDropdown
+                // Outputs the productList.php echos in the select with class=productDropdown
                 const pDrop = document.querySelector(".productDropdown");
                 pDrop.innerHTML = xmlhttp.responseText;
             }
