@@ -75,7 +75,11 @@
             $averageStock = $cumulativeStockSold / $searchResults->num_rows;
             echo " £" . $cumulativeSales;
             echo "<p class=\"averageStockStat\">Avg Stock:" . $averageStock . "</p>";
+        } else {
+            echo " £0";
+            echo "<p class=\"averageStockStat\">Avg Stock:0</p>";
         }
+
         $conn->close();
     }
 ?>
