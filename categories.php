@@ -1,77 +1,57 @@
+<?php
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
 
 </head>
     <body>
         <?php
-            include("php/includes/header.php");
+
         ?>
+
         <main>
-            <br><br>
             <div class="container">
-                <a href="dashboard.php" class="btn btn-light"><< Back to Dashboard</a>
-                <br><br>
-                <form action="inventory.php" method="post">                        
-                    <div class="row text-center">
-                        <div class="form-check col catg-cols">
-                            <label class="form-check-label" for="Keyboard">
-                                <input class="form-check-input" name="category" type="radio" value="Keyboard" id="Keyboard">
-                                Keyboard
-                            </label>
+                <div class="searchBox">
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Search:</span>
+                            <input type="text" class="form-control" placeholder="Product ID / Name" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
-                        <div class="form-check col catg-cols">
-                            <label class="form-check-label" for="Mouse">
-                                <input class="form-check-input" name="category" type="radio" value="Mouse" id="Mouse">
-                                Mouse
-                            </label>
+                    </form>
+                </div>
+                <div class="container px-4 text-center">
+                    <div class="row gx-5">
+                        <div class="col catg-cols">
+                            <h3>Keyboard</h3>
                         </div>
-                        <div class="form-check col catg-cols">
-                            <label class="form-check-label" for="Headset">
-                                <input class="form-check-input" name="category" type="radio" value="Headset" id="Headset">                            
-                                Headset
-                            </label>
+                        <div class="col catg-cols">
+                            <h3>Mouse</h3>
+                        </div>
+                        <div class="col catg-cols">
+                            <h3>Cables</h3>
                         </div>
                     </div>
-
-                    <div class="row text-center">
-                        <div class="form-check col catg-cols">
-                            <label class="form-check-label" for="Microphone">
-                                <input class="form-check-input" name="category" type="radio" value="Microphone" id="Microphone">
-                                Microphone
-                            </label>
+                    <div class="row gx-5">
+                        <div class="col catg-cols">
+                            <h3>Microphone</h3>
                         </div>
-                        <div class="form-check col catg-cols">
-                            <label class="form-check-label" for="Lights">
-                                <input class="form-check-input" name="category" type="radio" value="Speakers" id="Speakers">
-                                Speakers
-                            </label>
+                        <div class="col catg-cols">
+                            <h3>Lighting</h3>
                         </div>
-                        <div class="form-check col catg-cols">
-                            <label class="form-check-label" for="Connectors">
-                                <input class="form-check-input" name="category" type="radio" value="Monitor" id="Monitor">                            
-                                Monitors
-                            </label>
+                        <div class="col catg-cols">
+                            <h3>Connectors</h3>
                         </div>
                     </div>
-
-                    <div class="row text-center">
-                        <div class="form-check col catg-cols">
-                            <label class="form-check-label" for="allProducts">
-                                <input class="form-check-input" name="category" type="radio" value="allProducts" id="allProducts">
-                                All Products
-                            </label>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <input type="submit" value="Search" class="btn btn-custom">
-                    </div>
-                </form>
+                </div>
             </div>
         </main>
     </body>
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 </html>

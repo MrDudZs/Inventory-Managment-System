@@ -1,1 +1,0 @@
-mysql -p -u root invmgmtsys < invmgmtsys.sql
