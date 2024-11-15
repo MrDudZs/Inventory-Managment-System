@@ -17,7 +17,6 @@
                 <a href="categories.php" class="btn btn-light"><< Back to Categories</a>
                 <a href="dashboard.php" class="btn btn-light"><< Back to Dashboard</a>
                 <br><br>
-                <div class="row">
                     <?php
                         include "php/Includes/toInventory.php";
 
@@ -31,10 +30,15 @@
                             } else {
                                 echo "<h2 class=\"btn-custom\" style=\"padding: 7px;\">Product Category: " . $category . "</h2>";
                             }
+
+                            $count = 0;
                             // $item[index] - Index from the db column order
                             foreach ($inventory as $item) {
+                                if ($count % 3 === 0) {
+                                    echo "<div class=\"row\">";
+                                }
                                 echo "<div class=\"col-md-4 mb-4\">";
-                                    echo "<div class=\"card grid-sizing\" style=\"width: 18rem; height: 18rem;\">";
+                                    echo "<div class=\"card\" style=\"width: 100%; height: 16rem;\">";
                                         echo "<div class=\"card-body\">";
                                             echo "<h5 class=\"card-title\">" . $item[1] . "</h5>";
                                             echo "<h6 class=\"card-subtitle mb-2 text-body-secondary\">StockID: " . $item[0] . "</h6>";
@@ -45,12 +49,21 @@
                                         echo "</div>";
                                     echo "</div>";
                                 echo "</div>";
+
+                                if ($count % 3 === 2) {
+                                    echo "</div>";
+                                }
+
+                                $count++;
+                            }
+
+                            if ($count % 3 !== 0) {
+                                echo "</div>";
                             }
                         } else {
                             echo "<h2 class=\"btn-custom\" style=\"padding: 7px;\">No Products Available</h2>";
                         }
                     ?>
-                </div>
             </div>
         </main>
     </body>

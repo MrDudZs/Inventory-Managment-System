@@ -85,11 +85,6 @@ img{
 .form-check-input {
     border-color: var(--main-bg)
 }
-/* Inventory Page */
-.grid-sizing {
-    min-height: 16rem;
-    min-width: 18rem;
-}
 /* Create Invoice Form */
 .med-custom-bg {
     background-color: var(--med-bg);
