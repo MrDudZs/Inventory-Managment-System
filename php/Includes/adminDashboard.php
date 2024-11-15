@@ -9,17 +9,17 @@
             <h4>Generate Reports:</h4>
             <hr>
             <div class="d-grid gap-2">
-                <button type="button" class="btn-dashboard" onclick='window.location.href = ".php"'>Product sales</button>
-                <button type="button" class="btn-dashboard" onclick='window.location.href = ".php"'>Inventory levels</button>
-                <button type="button" class="btn-dashboard" onclick='window.location.href = ".php"'>Average stock levels</button>
+                <button type="button" class="btn-dashboard" onclick='window.location.href = "productSales.php"'>Product sales</button>
+                <button type="button" class="btn-dashboard" onclick='window.location.href = "inventoryLevels.php"'>Inventory levels</button>
+                <button type="button" class="btn-dashboard" onclick='window.location.href = "averageStockLevels.php"'>Average stock levels</button>
             </div>
         </div>
         <div class="col custom-dash-cols">
             <h4>Products:</h4>
             <hr>
             <div class="d-grid gap-2">
-                <button type="button" class="btn-dashboard" onclick='window.location.href = ".php"'>Add new product</button>
-                <button type="button" class="btn-dashboard" onclick='window.location.href = ".php"'>Remove product</button>
+                <button type="button" class="btn-dashboard" onclick='window.location.href = "addNewProduct.php"'>Add new product</button>
+                <button type="button" class="btn-dashboard" onclick='window.location.href = "removeProduct.php"'>Remove product</button>
             </div>
         </div>
     </div>
@@ -52,9 +52,9 @@
             <h4>History: </h4>
             <hr>
             <div class="d-grid gap-2">
-                <button type="button" class="btn-dashboard" onclick='window.location.href = ".php"'>Order transactions</button>
-                <button type="button" class="btn-dashboard" onclick='window.location.href = ".php"'>Invoices</button>
-                <button type="button" class="btn-dashboard" onclick='window.location.href = ".php"'>Reports</button>
+                <button type="button" class="btn-dashboard" onclick='window.location.href = "orderTransactions.php"'>Order transactions</button>
+                <button type="button" class="btn-dashboard" onclick='window.location.href = "invoiceHistory.php"'>Invoices</button>
+                <button type="button" class="btn-dashboard" onclick='window.location.href = "reports.php"'>Reports</button>
             </div>
         </div>
     </div>
