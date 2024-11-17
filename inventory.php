@@ -7,9 +7,7 @@
     <link href="css/main.css" rel="stylesheet" />
 
 </head>
-    <body>
-        <?php
-            include("php/includes/header.php");
-        ?>
-    </body>
+<body>
+    
+</body>
 </html>
