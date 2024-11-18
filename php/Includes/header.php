@@ -4,19 +4,17 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">IMS</a>
-    <?php
-    /*for the backend devs, need an if statement to see if user is logged in. Going to keep the
-    e.g.
-    if(loggedIn){
-        show logout button
-    }
-    else{
-        show login button
-    }
+    <form action="php/Redirect/logout.php" method="post">
+        <button class="btn btn-success my-2 my-sm-0" type="submit">
+            <?php
 
-    keeping both buttons below(I hope which one is which is obvious) so you just need to copy paste
-    */
-    ?>
-    <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
-    <button class="btn btn-success my-2 my-sm-0" type="submit">Log out</button>
+            // Check if the user is logged in
+            if (isset($_SESSION['user_email'])) {
+                echo "Logged in:" . $_SESSION['user_email'];
+            } else {
+                echo "Login";
+            }
+            ?>
+        </button>
+    </form>
 </nav>
