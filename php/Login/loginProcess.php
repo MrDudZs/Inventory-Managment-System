@@ -28,9 +28,9 @@ if ($result->num_rows == 1) {
 
         $_SESSION['user_id'] = $row['personalID'];
         $_SESSION['user_email'] = $row['email'];
-        
+        $_SESSION['permission_id'] = $row['permission_level'];
 
-        header("Location: ../../index.php");
+        header("Location: ../Redirect/dashProcess.php");
         exit();
     } else {
         echo "Invalid password.";
