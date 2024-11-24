@@ -12,7 +12,7 @@ addBtn.addEventListener("click", function() {
     newProduct.classList.add("row", "add-product-row");
     newProduct.innerHTML = `
         <div class="col-md-4">
-            <select class="form-select" aria-label="Select Product Category" required>
+            <select class="form-select categoryDropdown" aria-label="Select Product Category" id="category-${productCount}" required>
                 <option selected>Select Category:</option>
                 <option value="Keyboard">Keyboards</option>
                 <option value="Mouse">Mouse</option>
@@ -23,10 +23,9 @@ addBtn.addEventListener("click", function() {
             </select>
         </div>
         <div class="col-md-4">
-            <select class="form-select productDropdown" aria-label="Select Product" required>
+            <select class="form-select productDropdown" aria-label="Select Product" id="product-${productCount}" required>
                 <option selected>Select Product:</option>
-
-=            </select>
+            </select>
         </div>
         <div class="col-md-4">
             <select class="form-select" aria-label="Select Quantity" required>
@@ -52,6 +51,7 @@ addBtn.addEventListener("click", function() {
 removeProduct.addEventListener("click", function() {
     const products = document.querySelectorAll(".add-product-row");
     const lastProduct = document.querySelector(".add-product-row:last-child");
+    productCount--;
 
     if (products.length > 0) {
         addToForm.removeChild(lastProduct);
@@ -62,28 +62,26 @@ removeProduct.addEventListener("click", function() {
     }
 })
 
-function onChange() {
-    var value = categ.value;
+addToForm.addEventListener("change", function(e) {
+    if (e.target.classList.contains("form-select") && e.target.parentNode){
+        const selectedCateg = e.target.value;
+        const productDropdown = e.target.closest(".row").querySelector(".productDropdown");
 
-    if (value == "Select Category:") {
-        return;
-    } else {
-        const xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", "php/Includes/productList.php?q=" + value, true);
-        // Function runs everytime the readyState property of the xmlhttp changes
-        xmlhttp.onreadystatechange = function() {
-            // readyState returns the state the xmlhttp is in.
-            // 4 means the operation is complete. State = DONE
-            if (xmlhttp.readyState === 4) {
-                // Outputs the productList.php echos in the select with class=productDropdown
-                const pDrop = document.querySelector(".productDropdown");
-                pDrop.innerHTML = xmlhttp.responseText;
-            }
+        if (selectedCateg === "Select Category:") {
+            productDropdown.innerHTML = "<option>Select Product:</option>";
+        } else {
+            const xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "php/Includes/productList.php?q=" + selectedCateg, true);
+            // Function runs everytime the readyState property of the xmlhttp changes
+            xmlhttp.onreadystatechange = function() {
+                // readyState returns the state the xmlhttp is in.
+                // 4 means the operation is complete. State = Complete
+                if (xmlhttp.readyState === 4) {
+                    // Outputs the productList.php echos in the select with class=productDropdown
+                    productDropdown.innerHTML = xmlhttp.responseText;
+                }
+            };
+            xmlhttp.send();
         }
-        xmlhttp.send();
     }
-    console.log("Selected Index: " + value);
-}
-
-categ.onchange = onChange;
-onChange();
+})
