@@ -35,6 +35,7 @@ include "php/Includes/session.php";
         </main>
     </div>
 </body>
+
 <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 
 </html>
