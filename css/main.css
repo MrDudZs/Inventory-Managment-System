@@ -27,6 +27,9 @@ body {
     max-width: 500px;
     min-width: 300px;
 }
+.table-container {
+    background-color: var(--element-bg);
+}
 .btn-link {
     font-size: smaller;
     border: none;
@@ -39,7 +42,7 @@ body {
 .form-control:focus {
     border-color: var(--lighter-bg);
     outline: 0;
-    box-shadow: 0 0 0 0.25rem var(--med-bg);
+    box-shadow: 0 0 0 0.5rem rgba(2, 115, 94, 0.3);
 }
 /* Clerk Dashboard Page */
 .custom-dash-cols {
@@ -77,4 +80,12 @@ body {
 .catg-cols:nth-child(3n) {
     background-color: var(--med-bg);
     color: var(--text-bg);
+}
+
+.form-check-input {
+    border-color: var(--main-bg)
+}
+/* Create Invoice Form */
+.med-custom-bg {
+    background-color: var(--med-bg);
 }
