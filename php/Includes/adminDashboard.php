@@ -42,13 +42,20 @@
                 <p class="productSoldStat">Product Sold:<?php GetSales("1 month") ?></p>
             </div>
         </div>
-        <div>
+        <div class="row">
             <div class="col-7-5 custom-dash-cols">
+                <h4>Stock Level - Stock Sold:</h4>
                 <div class="d-grid gap-2">
                     <canvas id="barChart" width="50" height="25"></canvas>
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <script src="js/charts.js" defer></script>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7-5 custom-dash-cols">
+            <h4>Average Stock - Average Sold</h4>
+            <div class="d-grid gap-2">
+                <canvas id="doughnutChart"></canvas>
             </div>
         </div>
     </div>
@@ -67,7 +74,8 @@
         </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/charts.js" defer></script>
 <?php
 function FindLowStocks()
 {

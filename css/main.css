@@ -63,6 +63,17 @@ body {
     background-color: var(--med-bg);
     color: var(--text-bg);
 }
+
+/* Admin Dashboard Page */
+#barChart {
+    width: 250px;
+    height: 500px !important;
+}
+#doughnutChart {
+    width: 500px !important ;
+    height: 500px !important;
+}
+
 /* Category Page */
 .catg-cols {
     margin: 10px;
