@@ -27,7 +27,7 @@
             <h4>This Week:</h4>
             <hr>
             <div class="stockStats">
-                <p class="productSoldStat">Product Sold:<?php GetSales("1 week") ?></p>
+                <p class="productSoldStat">Product Sold:<?php GetSales("1 week") ?></p> 
             </div>
             <hr>
             <h4>This Month:</h4>
@@ -48,7 +48,7 @@
 
         if ($searchResults->num_rows > 0){
             while ($row = $searchResults->fetch_assoc()){
-                echo " " . $row['stockBrand'] . ", " . $row['stockName'] . ". Stock left: " . $row['stockCount'] . "<br>";
+                echo $row['stockBrand'] . ", " . $row['stockName'] . ". Stock left: " . $row['stockCount'] . "<br>";
             }
         }
         $conn->close();
@@ -59,22 +59,15 @@
         
         $currentDate = date('Ymd', strtotime("Now"));
         $lastWeeksDate = date('Ymd', strtotime("-" . $timeScale));
-        $sql = "SELECT stockPrice, saleCount FROM invoice " . 
-        "INNER JOIN saleshistory ON invoice.invoiceID = saleshistory.saleID " .
-        "INNER JOIN stock ON saleshistory.saleStockID = stock.stockID " .
-        "WHERE invoice.invoiceDate < " . $currentDate . " AND invoice.invoiceDate > " . $lastWeeksDate;
+        $sql = "SELECT invoiceCost FROM invoice WHERE invoiceDate < " . $currentDate . " AND invoiceDate > " . $lastWeeksDate;
         $searchResults = $conn->query($sql);
 
         $cumulativeSales = 0;
-        $cumulativeStockSold = 0;
         if ($searchResults->num_rows > 0){
             while ($row = $searchResults->fetch_assoc()){
-                $cumulativeSales += $row['stockPrice'] * $row['saleCount'];
-                $cumulativeStockSold += $row['saleCount'];
+                $cumulativeSales += $row['invoiceCost'];
             }
-            $averageStock = $cumulativeStockSold / $searchResults->num_rows;
             echo " £" . $cumulativeSales;
-            echo "<p class=\"averageStockStat\">Avg Stock:" . $averageStock . "</p>";
         }
         $conn->close();
     }
