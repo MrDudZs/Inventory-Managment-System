@@ -54,20 +54,26 @@
         $conn->close();
     }
 
-    function GetSales($timeScale) {
+    function GetSales($timeScale)
+    {
         include 'php/DB-Connection/configDB.php';
-        
         $currentDate = date('Ymd', strtotime("Now"));
         $lastWeeksDate = date('Ymd', strtotime("-" . $timeScale));
-        $sql = "SELECT invoiceCost FROM invoice WHERE invoiceDate < " . $currentDate . " AND invoiceDate > " . $lastWeeksDate;
+        $sql = "SELECT stockPrice, saleCount FROM invoice " .
+            "INNER JOIN saleshistory ON invoice.invoiceID = saleshistory.saleID " .
+            "INNER JOIN stock ON saleshistory.saleStockID = stock.stockID " .
+            "WHERE invoice.invoiceDate < " . $currentDate . " AND invoice.invoiceDate > " . $lastWeeksDate;
         $searchResults = $conn->query($sql);
-
         $cumulativeSales = 0;
-        if ($searchResults->num_rows > 0){
-            while ($row = $searchResults->fetch_assoc()){
-                $cumulativeSales += $row['invoiceCost'];
+        $cumulativeStockSold = 0;
+        if ($searchResults->num_rows > 0) {
+            while ($row = $searchResults->fetch_assoc()) {
+                $cumulativeSales += $row['stockPrice'] * $row['saleCount'];
+                $cumulativeStockSold += $row['saleCount'];
             }
+            $averageStock = $cumulativeStockSold / $searchResults->num_rows;
             echo " £" . $cumulativeSales;
+            echo "<p class=\"averageStockStat\">Avg Stock:" . $averageStock . "</p>";
         }
         $conn->close();
     }
