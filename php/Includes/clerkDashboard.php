@@ -50,6 +50,8 @@
             while ($row = $searchResults->fetch_assoc()){
                 echo $row['stockBrand'] . ", " . $row['stockName'] . ". Stock left: " . $row['stockCount'] . "<br>";
             }
+        } else {
+            echo "None<br>";
         }
         $conn->close();
     }
@@ -74,6 +76,9 @@
             $averageStock = $cumulativeStockSold / $searchResults->num_rows;
             echo " £" . $cumulativeSales;
             echo "<p class=\"averageStockStat\">Avg Stock:" . $averageStock . "</p>";
+        } else {
+            echo " £0";
+            echo "<p class=\"averageStockStat\">Avg Stock:0</p>";
         }
         $conn->close();
     }
