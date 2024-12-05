@@ -1,0 +1,80 @@
+TL:DR
+Updated to brief MVC requirments
+
+What I have done in short > Moved almost all files with HTML to view as that's where HTML files go
+Created Controllers relevant to what we need will be assigned accordingly
+Create Routes to these to displaying them on page
+
+
+What I did:
+
+Create Views which means I have removed almost all files from the public folder that have HTML and moved them to Views.
+
+Why? Views is where the HTML files are stored
+
+Why is there a ".blade.php"? This is due to Laravel having blade there is no difference but to keep with laravels file naming in the view folder we will be keeping .blade.php
+
+
+Controllers?
+I have made multiple controllers that will now need the relevant code in to allow for access to pages
+
+What they all do:
+
+HomeController:
+Purpose: Manages the home or main dashboard of the application.
+
+Typical Actions: Display the home page, handle general application overview.
+
+AuthController:
+Purpose: Manages authentication-related actions.
+
+Typical Actions: Handle user login, registration, logout, and password reset.
+
+DashboardController:
+Purpose: Manages the user dashboard.
+
+Typical Actions: Display user-specific information, summaries, and metrics.
+
+InventoryController:
+Purpose: Manages inventory-related actions.
+
+Typical Actions: Display inventory lists, add new inventory items, update existing items, delete items.
+
+InvoiceController:
+Purpose: Manages actions related to creating and handling invoices.
+
+Typical Actions: Create new invoices, display invoice details, list all invoices.
+
+CategoryController:
+Purpose: Manages inventory categories.
+
+Typical Actions: Add new categories, update existing categories, delete categories, list categories.
+
+AdminController:
+Purpose: Manages administrative actions for system administrators.
+
+Typical Actions: Handle administrative tasks like user management, system settings, and monitoring.
+
+
+
+What about routes?
+
+web.php
+
+When you go to the root URL (/), it shows the home page.
+
+Going to /login shows the login page.
+
+/register takes you to the registration page.
+
+/dashboard displays the user dashboard.
+
+/inventory shows the inventory list.
+
+/create-invoice opens the invoice creation page.
+
+/categories shows the inventory categories.
+
+/sysadmin takes you to the system administration page.
+
+/invoice-form displays the invoice form.

@@ -1,7 +1,3 @@
-<?php
-session_start();
-include "php/Includes/session.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 
