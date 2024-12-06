@@ -25,6 +25,6 @@ Route::get('/invoice-form', [InvoiceController::class, 'form'])->name('invoiceFo
 
 Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name('submit-category');
 
-Route::get('/fetch-data', [InvoiceController::class, 'fetchData']);
+Route::get('/fetch-data', [InvoiceController::class, 'fetchData'])->name('fetch-data');
 
 Auth::routes();
