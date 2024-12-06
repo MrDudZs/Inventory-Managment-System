@@ -16,7 +16,7 @@
             <div class="container">
                 <a href="dashboard.php" class="btn btn-light"><< Back to Dashboard</a>
                 <br><br>
-                <form action="inventory.php" method="post">                        
+                <form action="/submit-category" method="post">                        
                     <div class="row text-center">
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Keyboard">
