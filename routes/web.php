@@ -9,8 +9,11 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/', function() {
+    return view('landing');
+});
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -19,5 +22,7 @@ Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('creat
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
 Route::get('/invoice-form', [InvoiceController::class, 'form'])->name('invoiceForm');
+
+Route::post('/submit-category', [CategoryController::class, 'handleForm']);
 
 Auth::routes();
