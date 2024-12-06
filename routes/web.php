@@ -17,12 +17,12 @@ Route::get('/', function() {
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
+// Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
 Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('createInvoice');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
 Route::get('/invoice-form', [InvoiceController::class, 'form'])->name('invoiceForm');
 
-Route::post('/submit-category', [CategoryController::class, 'handleForm']);
+Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name('submit-category');
 
 Auth::routes();
