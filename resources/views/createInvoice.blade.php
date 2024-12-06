@@ -90,5 +90,5 @@
         <br><br>
     </main>
 </body>
-<script src="js/invoiceForm.js"></script>
+<script src="{{ asset('js/invoiceForm.js') }}"></script>
 </html>
