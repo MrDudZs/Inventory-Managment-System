@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\stock;
+use App\Models\Stock;
 
 class CategoryController extends Controller
 {
@@ -16,11 +16,20 @@ class CategoryController extends Controller
     public function handleForm(Request $request) 
     {
         $validatedData = $request->validate([
-            'stockType' => 'required|string',
+            'category' => 'required|in:Keyboard,Mouse,Headset,Microphone,Speakers,Monitor,allProducts',
         ]);
 
-        $data = stock::where('stockType', $validatedData['stockType'])->get();
+        if ($validatedData['category'] == 'allProducts') {
+            $data = Stock::all();
+        }
+        else {
+            $data = Stock::where('stockType', $validatedData['category'])->get();
+        }
 
-        return view('/inventory', ['data' => $data]);
+        if ($data->isEmpty()) {
+            $data = Stock::all();
+        }
+
+        return view('inventory', ['data' => $data]);
     }
 }
