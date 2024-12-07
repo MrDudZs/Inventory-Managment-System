@@ -21,6 +21,7 @@
                 @php 
                     $count = 0;
                 @endphp
+                
                 @foreach($data as $item) 
                     @if($count % 3 == 0)
                         <div class="row">
@@ -51,54 +52,6 @@
                 @if($count % 3 != 0)
                     </div>
                 @endif
-
-                    <?php
-                        // include "php/Includes/toInventory.php";
-
-                        // // If is null then allProducts is default.
-                        // $category = isset($_POST['category']) ? $_POST['category'] : 'allProducts';
-                        // $inventory = fetchInventory($category);
-
-                        // if (isset($inventory)) {
-                        //     if ($category == "allProducts") {
-                        //         echo "<h2 class=\"btn-custom\" style=\"padding: 7px;\">All Products</h2>";
-                        //     } else {
-                        //         echo "<h2 class=\"btn-custom\" style=\"padding: 7px;\">Product Category: " . $category . "</h2>";
-                        //     }
-
-                        //     $count = 0;
-                        //     // $item[index] - Index from the db column order
-                        //     foreach ($inventory as $item) {
-                        //         if ($count % 3 === 0) {
-                        //             echo "<div class=\"row\">";
-                        //         }
-                        //         echo "<div class=\"col-md-4 mb-4\">";
-                        //             echo "<div class=\"card\" style=\"width: 100%; height: 16rem;\">";
-                        //                 echo "<div class=\"card-body\">";
-                        //                     echo "<h5 class=\"card-title\">" . $item[1] . "</h5>";
-                        //                     echo "<h6 class=\"card-subtitle mb-2 text-body-secondary\">StockID: " . $item[0] . "</h6>";
-                        //                     echo "<p class=\"card-text\">Category: " . $item[3] . "</p>";
-                        //                     echo "<p class=\"card-text\">Brand: " . $item[5] . "</p>";
-                        //                     echo "<p class=\"card-text\">Price: £" . $item[4] . "</p>";
-                        //                     echo "<p class=\"card-text\">" . $item[2] . " - In Stock</p>";
-                        //                 echo "</div>";
-                        //             echo "</div>";
-                        //         echo "</div>";
-
-                        //         if ($count % 3 === 2) {
-                        //             echo "</div>";
-                        //         }
-
-                        //         $count++;
-                        //     }
-
-                        //     if ($count % 3 !== 0) {
-                        //         echo "</div>";
-                        //     }
-                        // } else {
-                        //     echo "<h2 class=\"btn-custom\" style=\"padding: 7px;\">No Products Available</h2>";
-                        // }
-                    ?>
             </div>
         </main>
     </body>

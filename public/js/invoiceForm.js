@@ -71,7 +71,7 @@ addToForm.addEventListener("change", function(e) {
             productDropdown.innerHTML = "<option>Select Product:</option>";
         }
 
-        fetch('/fetch-data?value=' + selectedCateg)
+        fetch('/fetch-product?value=' + selectedCateg)
             .then(response => response.json())
             .then(data => {
                 productDropdown.innerHTML = "";
@@ -82,6 +82,7 @@ addToForm.addEventListener("change", function(e) {
                 data.forEach(function(item) {
                     var option = document.createElement('option');
                     option.textContent = item.stockName;
+                    option.value = item.stockName;
                     productDropdown.appendChild(option);
                 });
             })
