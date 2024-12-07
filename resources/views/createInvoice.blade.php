@@ -13,7 +13,8 @@
     <main>
         <br>
         <div class="container">
-            <form action="" method="post" class="productForm">
+            <form action="{{ route('submit-invoiceForm') }}" method="post" class="productForm">
+                @csrf
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <input type="submit" value="Create Invoice" class="btn btn-custom btn-create">
                 </div>
@@ -22,36 +23,36 @@
                 <h6 style="padding: 5px; background-color: var(--header-bg); color: var(--text-bg)">Customer Details:</h6>
                 <div class="row">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="fullName" placeholder="Full name" aria-label="Full name" required>
+                        <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Full name" aria-label="Full name" required>
                     </div>
                     <div class="col-md-6">
-                        <input type="email" class="form-control" id="customerEmail" placeholder="Email Address" aria-label="Email Address" required>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" id="customerAddress1" placeholder="Address Line 1" aria-label="Address Line 1" required>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" id="customerAddress2" placeholder="Address Line 2" aria-label="Address Line 2">
+                        <input type="email" class="form-control" id="customerEmail" name="customerEmail" placeholder="Email Address" aria-label="Email Address" required>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="city" placeholder="City" aria-label="City" required>
+                        <input type="text" class="form-control" id="customerAddress1" name="customerAddress1" placeholder="Address Line 1" aria-label="Address Line 1" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="customerAddress2" name="customerAddress2" placeholder="Address Line 2" aria-label="Address Line 2">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="city" name="city" placeholder="City" aria-label="City" required>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="postcode" placeholder="Postcode" aria-label="Postcode" required>
+                        <input type="text" class="form-control" id="postcode" name="postcode" placeholder="Postcode" aria-label="Postcode" required>
                     </div>
                 </div>
                 <br>
                 <h6 style="padding: 5px; background-color: var(--header-bg); color: var(--text-bg)">Product Orders:</h6>
                 <div class="row">
                     <div class="col-md-4">
-                        <select class="form-select" id="selectCateg" aria-label="Select Product Category" name="SelectProductCategory" required>
-                            <option selected>Select Category:</option>
+                        <select class="form-select" id="category_0" aria-label="Select Product Category" name="products[0][category]" required>
+                            <option value="" selected>Select Category:</option>
                             <option value="Keyboard">Keyboards</option>
                             <option value="Mouse">Mouse</option>
                             <option value="Monitor">Monitor</option>
@@ -61,24 +62,12 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-select productDropdown" aria-label="Select Product" name="SelectProduct" required>
-                            <option selected>Select Product:</option>
-                            
+                        <select class="form-select productDropdown" id="product_0" aria-label="Select Product" name="products[0][product]" required>
+                            <option value="" selected>Select Product:</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-select" aria-label="Select Quantity" name="SelectQuantity" required>
-                            <option selected>Select Quantity:</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                        </select>
+                        <input type="number" class="form-select" id="quantity_0" aria-label="Select Quantity" name="products[0][quantity]" placeholder="Quantity:" min=1 step=1 required>
                     </div>
                 </div>
                 <br>
