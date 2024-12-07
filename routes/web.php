@@ -24,6 +24,7 @@ Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
 Route::get('/invoice-form', [InvoiceController::class, 'form'])->name('invoiceForm');
 
 Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name('submit-category');
+Route::post('/submit-invoiceForm', [InvoiceController::class, 'handleForm'])->name('submit-invoiceForm');
 
 Route::get('/fetch-product', [InvoiceController::class, 'fetchData'])->name('fetch-product');
 
