@@ -12,7 +12,7 @@ use App\Http\Controllers\AdminController;
 // Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/', function() {
-    return view('landing');
+    return view('index');
 });
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
