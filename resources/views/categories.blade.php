@@ -14,9 +14,10 @@
         <main>
             <br><br>
             <div class="container">
-                <a href="dashboard.php" class="btn btn-light"><< Back to Dashboard</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-light"><< Back to Dashboard</a>
                 <br><br>
-                <form action="inventory.php" method="post">                        
+                <form action="{{ route('submit-category') }}" method="post">   
+                    @csrf
                     <div class="row text-center">
                         <div class="form-check col catg-cols">
                             <label class="form-check-label" for="Keyboard">

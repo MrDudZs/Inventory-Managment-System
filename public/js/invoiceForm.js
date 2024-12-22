@@ -12,8 +12,8 @@ addBtn.addEventListener("click", function() {
     newProduct.classList.add("row", "add-product-row");
     newProduct.innerHTML = `
         <div class="col-md-4">
-            <select class="form-select categoryDropdown" aria-label="Select Product Category" id="category-${productCount}" required>
-                <option selected>Select Category:</option>
+            <select class="form-select categoryDropdown" aria-label="Select Product Category" id="category_${productCount}" name="products[${productCount}][category]" required>
+                <option value="" selected>Select Category:</option>
                 <option value="Keyboard">Keyboards</option>
                 <option value="Mouse">Mouse</option>
                 <option value="Monitor">Monitor</option>
@@ -23,23 +23,12 @@ addBtn.addEventListener("click", function() {
             </select>
         </div>
         <div class="col-md-4">
-            <select class="form-select productDropdown" aria-label="Select Product" id="product-${productCount}" required>
-                <option selected>Select Product:</option>
+            <select class="form-select productDropdown" aria-label="Select Product" id="product_${productCount}" name="products[${productCount}][product]" required>
+                <option value="" selected>Select Product:</option>
             </select>
         </div>
         <div class="col-md-4">
-            <select class="form-select" aria-label="Select Quantity" required>
-                <option selected>Select Quantity:</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-            </select>
+            <input type="number" class="form-select" aria-label="Select Quantity" id="quantity_${productCount}" name="products[${productCount}][quantity]" placeholder="Quantity:" min=1 step=1 required>
         </div>
         <br><br>
     `;
@@ -63,25 +52,33 @@ removeProduct.addEventListener("click", function() {
 })
 
 addToForm.addEventListener("change", function(e) {
-    if (e.target.classList.contains("form-select") && e.target.parentNode){
+    if (e.target.classList.contains("form-select") && e.target.name.includes("category")){
         const selectedCateg = e.target.value;
         const productDropdown = e.target.closest(".row").querySelector(".productDropdown");
 
-        if (selectedCateg === "Select Category:") {
+        if (selectedCateg === "Selected Category:") {
             productDropdown.innerHTML = "<option>Select Product:</option>";
         } else {
-            const xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", "php/Includes/productList.php?q=" + selectedCateg, true);
-            // Function runs everytime the readyState property of the xmlhttp changes
-            xmlhttp.onreadystatechange = function() {
-                // readyState returns the state the xmlhttp is in.
-                // 4 means the operation is complete. State = Complete
-                if (xmlhttp.readyState === 4) {
-                    // Outputs the productList.php echos in the select with class=productDropdown
-                    productDropdown.innerHTML = xmlhttp.responseText;
-                }
-            };
-            xmlhttp.send();
+            fetch('/fetch-product?value=' + selectedCateg)
+            .then(response => response.json())
+            .then(data => {
+                productDropdown.innerHTML = "";
+                var defaultOption = document.createElement('option');
+                defaultOption.textContent = "Select Product:";
+                productDropdown.appendChild(defaultOption);
+
+                data.forEach(function(item) {
+                    var option = document.createElement('option');
+                    option.textContent = item.stockName;
+                    option.value = item.stockName;
+                    productDropdown.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                productDropdown.innerHTML = '<option>Error loading data</option>';
+            });
         }
     }
-})
+});
+
