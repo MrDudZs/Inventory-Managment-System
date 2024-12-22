@@ -21,9 +21,9 @@
         </div>
     </div>
     <div class="d-grid col-6 mx-auto">
-        <a class="btn btn-success btn-lg" href="login.php" role="button">Login</a>
+        <a class="btn btn-success btn-lg" href="{{ route('login') }}" role="button">Login</a>
     </div>
 </body>
-<script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+<script src="{{ asset('bootstrap-5.3.3-dist/js/bootstrap.js') }}"></script>
 
 </html>

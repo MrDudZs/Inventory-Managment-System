@@ -1,49 +1,61 @@
 <?php
-// // Saw this in a tutorial not sure if its needed or not.
-// use Illuminate\Http\Request;
 
-// define('LARAVEL_START', microtime(true));
+/**
+ * Laravel - A PHP Framework For Web Artisans
+ *
+ * @package  Laravel
+ * @version  8.0.0
+ */
 
-// // Determine if the application is in maintenance mode...
-// if(file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-//     require $maintenance;
-// }
+define('LARAVEL_START', microtime(true));
 
-// // Register the Composer autoloader...
-// require __DIR__.'/../vendor/autoload.php';
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll simply require
+| it into the script here so that we don't have to worry about the 
+| loading of our classes manually later on.
+|
+*/
 
-// // Boostrap Laravel and handle the request...
-// (require_once __DIR__.'/../bootstrap/app.php')
-//     ->handleRequest(Request::capture());
-?>
+require __DIR__.'/../vendor/autoload.php';
 
-<!DOCTYPE html>
-<html lang="en">
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let's turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight our users.
+|
+*/
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-<body>
-    <?php
-    include("php/includes/header.php");
-    ?>
-    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/mouse.jpg" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item">
-                <img src="images/keyboard.jpg" class="d-block w-100" alt="">
-            </div>
-        </div>
-    </div>
-    <div class="d-grid col-6 mx-auto">
-        <a class="btn btn-success btn-lg" href="login.php" role="button">Login</a>
-    </div>
-</body>
-<script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request
+| through the kernel, and send the associated response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have prepared for them.
+|
+*/
 
-</html>
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
+
+$response->send();
+
+$kernel->terminate($request, $response);
+

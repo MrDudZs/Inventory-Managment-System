@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col custom-dash-cols">
-            <h4>Suspend User Account:</h4>
+            <h4>Create Account</h4>
             <hr>
             <div class="d-grid gap-2">
                 <div class="loginForm">
