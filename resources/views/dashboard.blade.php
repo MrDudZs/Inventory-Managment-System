@@ -5,33 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
+    <link href="{{ asset(path: 'bootstrap-5.3.3-dist/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset(path: 'css/main.css') }}" rel="stylesheet" />
 </head>
 
 <body>
     <div class="header">
-        <?php include "php/Includes/header.php"; ?>
+        @include('../includes.header')
     </div>
     <div class="dashboardDisplay">
         <main>
-            <?php
-            if ($permissionId == 1): ?>
-                <?php include "php/Includes/clerkDashboard.php"; ?>
-            <?php elseif ($permissionId == 2): ?>
-                <?php include "php/Includes/adminDashboard.php"; ?>
-            <?php else: ?>
-                <?php
-                // This Section will end if the permissionId is no longer set for user
-                session_destroy();
-                header(header: "Location: login.php");
-                exit();
-                ?>
-            <?php endif; ?>
+            @if ($permissionId == 1)
+                @include('../includes.clerkDashboard')
+            @elseif ($permissionId == 2)
+                @include('../includes.adminDashboard')
+            @else
+                {{ session()->flush() }}
+                <script>
+                    window.location.href = "{{ url(path: '/login') }}";
+                </script>
+            @endif
         </main>
     </div>
 </body>
 
-<script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+<script src="{{ asset(path: 'bootstrap-5.3.3-dist/js/bootstrap.js') }}"></script>
 
 </html>
