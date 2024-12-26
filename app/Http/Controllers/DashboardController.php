@@ -12,14 +12,34 @@ class DashboardController extends Controller
     /**
      * Show the dashboard.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function show()
     {
         $user = Auth::user();
         $permissionId = $user->permission_level;
 
+        if ($permissionId == 1) {
+            return redirect()->route('clerk.dashboard');
+        } elseif ($permissionId == 2) {
+            return redirect()->route('admin.dashboard');
+        }
+
         return view('dashboard', compact('permissionId'));
+    }
+
+    /**
+     * Show the admin dashboard.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showAdminDashboard()
+    {
+        $lowStocks = Stock::where('stockCount', '<', 16)->get();
+        $salesWeek = $this->getSales('1 week');
+        $salesMonth = $this->getSales('1 month');
+
+        return view('includes.adminDashboard', compact('lowStocks', 'salesWeek', 'salesMonth'));
     }
 
     /**
@@ -47,8 +67,12 @@ class DashboardController extends Controller
         $currentDate = now();
         $startDate = now()->sub($timeScale);
 
-        $sales = Invoice::whereBetween('invoiceDate', [$startDate, $currentDate])->sum('invoiceCost');
+        $sales = Invoice::whereBetween('invoiceDate', [$startDate, $currentDate])
+            ->join('saleshistory', 'invoice.invoiceID', '=', 'saleshistory.saleID')
+            ->join('stock', 'saleshistory.saleStockID', '=', 'stock.stockID')
+            ->selectRaw('SUM(stock.stockPrice * saleshistory.saleCount) as cumulativeSales')
+            ->value('cumulativeSales');
 
-        return $sales;
+        return $sales ?? 0;
     }
 }

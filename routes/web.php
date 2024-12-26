@@ -23,7 +23,11 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', [DashboardController::class, 'show'])->name(name: 'dashboard')->middleware(middleware: 'auth');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+    Route::get('/clerk-dashboard', [DashboardController::class, 'showClerkDashboard'])->name('clerk.dashboard');
+    Route::get('/admin-dashboard', [DashboardController::class, 'showAdminDashboard'])->name('admin.dashboard');
+});
 Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
 Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('createInvoice');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');

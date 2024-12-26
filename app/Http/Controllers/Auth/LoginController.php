@@ -64,7 +64,8 @@ class LoginController extends Controller
     protected function attemptLogin(Request $request)
     {
         return Auth::attempt(
-            $this->credentials($request), $request->filled('remember')
+            $this->credentials($request),
+            $request->filled('remember')
         );
     }
 
@@ -88,6 +89,17 @@ class LoginController extends Controller
     protected function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();
+
+        session(['user_email' => Auth::user()->email]);
+
+        $user = Auth::user();
+        $permissionId = $user->permission_level;
+
+        if ($permissionId == 1) {
+            return redirect()->route('clerk.dashboard');
+        } elseif ($permissionId == 2) {
+            return redirect()->route('admin.dashboard');
+        }
 
         return redirect()->intended('dashboard');
     }
@@ -121,6 +133,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->intended('login');
     }
 }
