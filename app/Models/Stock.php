@@ -11,8 +11,7 @@ class Stock extends Model
     use HasFactory;
 
     protected $table = 'stock';
-<<<<<<< Updated upstream
-=======
+
     protected $fillable = [
         'stockName',
         'stockCount',
@@ -20,5 +19,5 @@ class Stock extends Model
         'stockPrice',
         'stockBrand'
     ];
->>>>>>> Stashed changes
+
 }

@@ -8,6 +8,7 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    protected $table = 'invoice';
     protected $fillable = [
         'invoiceCost',
         'invoiceDate'

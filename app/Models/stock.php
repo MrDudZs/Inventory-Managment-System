@@ -11,4 +11,13 @@ class Stock extends Model
     use HasFactory;
 
     protected $table = 'stock';
+
+    protected $fillable = [
+        'stockName',
+        'stockCount',
+        'stockType',
+        'stockPrice',
+        'stockBrand'
+    ];
+
 }
