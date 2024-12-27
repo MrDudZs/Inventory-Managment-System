@@ -37,7 +37,7 @@
                 <h4>Products:</h4>
                 <hr>
                 <div class="d-grid gap-2">
-                    @include('../includes.newProduct')
+                    @include('../includes.newProduct', ['stockTypes' => $stockType])
                     @include('../includes.removeProducts')
                 </div>
             </div>

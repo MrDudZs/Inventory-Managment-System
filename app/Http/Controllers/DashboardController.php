@@ -38,8 +38,9 @@ class DashboardController extends Controller
         $lowStocks = Stock::where('stockCount', '<', 16)->get();
         $salesWeek = $this->getSales('1 week');
         $salesMonth = $this->getSales('1 month');
+        $stockType = Stock::distinct()->pluck('stockType');
 
-        return view('includes.adminDashboard', compact('lowStocks', 'salesWeek', 'salesMonth'));
+        return view('includes.adminDashboard', compact('lowStocks', 'salesWeek', 'salesMonth', 'stockType'));
     }
 
     /**
