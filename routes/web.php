@@ -7,9 +7,10 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
-
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProductController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -24,10 +25,19 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
-    Route::get('/clerk-dashboard', [DashboardController::class, 'showClerkDashboard'])->name('clerk.dashboard');
     Route::get('/admin-dashboard', [DashboardController::class, 'showAdminDashboard'])->name('admin.dashboard');
-});
+    Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newProduct');
+    Route::get('/get-brands', [ProductController::class, 'getBrands']);
+    Route::get('/get-names', [ProductController::class, 'getNames']); });
+
+/* 
+/ app\Http\Controllers\ProductController
+*/
+Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newProduct');
+Route::get('/newProduct', [ProductController::class, 'newProduct'])->name('showNewProductForm');
+Route::get('/get-brands', [ProductController::class, 'getBrands']);
+Route::get('/get-names', [ProductController::class, 'getNames']);
+
 Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
 Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('createInvoice');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');

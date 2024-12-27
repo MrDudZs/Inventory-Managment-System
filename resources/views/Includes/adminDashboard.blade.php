@@ -37,12 +37,8 @@
                 <h4>Products:</h4>
                 <hr>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn-dashboard" onclick='window.location.href = "addNewProduct.php"'>Add
-                        new
-                        product</button>
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "removeProduct.php"'>Remove
-                        product</button>
+                    @include('../includes.newProduct', ['stockTypes' => $stockType])
+                    @include('../includes.removeProducts')
                 </div>
             </div>
         </div>
@@ -92,6 +88,8 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset(path: 'bootstrap-5.3.3-dist/js/bootstrap.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/charts.js" defer></script>
     <?php
