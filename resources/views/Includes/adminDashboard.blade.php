@@ -38,9 +38,7 @@
                 <hr>
                 <div class="d-grid gap-2">
                     @include('../includes.newProduct')
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "removeProduct.php"'>Remove
-                        product</button>
+                    @include('../includes.removeProducts')
                 </div>
             </div>
         </div>
