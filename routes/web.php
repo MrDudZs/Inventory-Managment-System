@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -29,12 +30,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin-dashboard', [DashboardController::class, 'showAdminDashboard'])->name('admin.dashboard');
 });
 Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
-Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('createInvoice');
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-Route::get();
-Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
-Route::get('/handle-invoice', [InvoiceController::class, 'handleForm'])->name('handle.form');
 
-Route::get('/submit-invoice', [InvoiceController::class, 'submitInvoice'])->name('submit.invoice');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::post('/submit-category', CategoryController::class, 'handleForm')->name('submit-category');
+
+Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
+
+Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('create-invoice'); // Open the invoice form
+Route::post('/handle-invoice', [InvoiceController::class, 'handleForm'])->name('handle-invoice'); // Makes Invoice layout for PDF
+Route::get('/submit-invoice', [InvoiceController::class, 'submitInvoice'])->name('submit-invoice'); // Generate PDF edits db
 
 Auth::routes();
