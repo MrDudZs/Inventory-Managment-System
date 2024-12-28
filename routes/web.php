@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-Route::post('/submit-category', CategoryController::class, 'handleForm')->name('submit-category');
+Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name('submit-category');
 
 Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
 
