@@ -8,9 +8,8 @@
     <link href="css/main.css" rel="stylesheet" />
 </head>
     <body>
-        <?php
-            include("php/includes/header.php");
-        ?>
+        @include('../includes.header')
+
         <main>
             <br><br>
             <div class="container">

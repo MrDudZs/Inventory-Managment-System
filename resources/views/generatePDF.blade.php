@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <a class="btn btn-custom" href="{{ route('') }}">Save Invoice</a>
+            <a class="btn btn-custom">Save Invoice</a>
         </div>
     </main>
 </body>
