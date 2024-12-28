@@ -13,7 +13,7 @@
     <main>
         <br>
         <div class="container">
-            <form action="{{ route('submit-invoiceForm') }}" method="post" class="productForm">
+            <form action="{{ route('handle-invoice') }}" method="post" class="productForm">
                 @csrf
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <input type="submit" value="Create Invoice" class="btn btn-custom btn-create">

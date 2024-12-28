@@ -8,12 +8,11 @@
     <link href="css/main.css" rel="stylesheet" />
 </head>
 <body>
-    <?php
-        include("php/includes/header.php");
-    ?>
+    @include('../includes.header')
     <main>
         <br>
         <a href="{{ route('dashboard') }}" class="btn btn-light"><< Back to Dashboard</a>
+
         <br>
         <div class="container p-3 my-3 bg-white">
             <div class="customer-data">
@@ -70,7 +69,7 @@
             </div>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-custom">Save Ivoice</button>
+            <a class="btn btn-custom" href="{{ route('') }}">Save Invoice</a>
         </div>
     </main>
 </body>

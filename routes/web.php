@@ -31,7 +31,10 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
 Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('createInvoice');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::get();
 Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
-Route::get('/invoice-form', [InvoiceController::class, 'form'])->name('invoiceForm');
+Route::get('/handle-invoice', [InvoiceController::class, 'handleForm'])->name('handle.form');
+
+Route::get('/submit-invoice', [InvoiceController::class, 'submitInvoice'])->name('submit.invoice');
 
 Auth::routes();

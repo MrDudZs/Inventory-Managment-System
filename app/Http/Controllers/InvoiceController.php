@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Stock;
+use App\Models\Invoice;
+use Barryvdh\DomPDF\Facade as PDF;
+
+use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
@@ -74,5 +78,21 @@ class InvoiceController extends Controller
         $data = Stock::where('stockType', $value)->select('stockId', 'stockName')->get();
 
         return response()->json($data);
+    }
+
+    public function submitInvoice(Request $request)
+    {
+
+        $pdf = PDF::loadView('generatePDF');
+        $pdfContent = $pdf->output();
+
+        $user = Auth::user();
+
+        Invoice::create([
+            'invoiceStaff' => $user->staffID,
+            'invoicePDF' => $pdfContent,
+            'invoiceDate' => now()->toDateString(),
+        ]);
+
     }
 }
