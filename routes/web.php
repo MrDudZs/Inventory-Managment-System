@@ -28,6 +28,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
  * Route for Dashboard
  */
 Route::middleware(['auth'])->group(function () {
+    Route::get('/clerk-dashboard', [DashboardController::class, 'showClerkDashboard'])->name('clerk.dashboard');
     Route::get('/admin-dashboard', [DashboardController::class, 'showAdminDashboard'])->name('admin.dashboard');
     Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newProduct');
     Route::get('/get-brands', [ProductController::class, 'getBrands']);

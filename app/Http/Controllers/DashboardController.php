@@ -55,11 +55,16 @@ class DashboardController extends Controller
      */
     public function showClerkDashboard()
     {
+        $user = Auth::user();
+
+        $department = StoreAndWearhouse::where('location_name', $user->location)->pluck('location_type')->first();
+
+
         $lowStocks = Stock::where('stockCount', '<', 16)->get();
         $salesWeek = $this->getSales('1 week');
         $salesMonth = $this->getSales('1 month');
 
-        return view('includes.clerkDashboard', compact('lowStocks', 'salesWeek', 'salesMonth'));
+        return view('includes.clerkDashboard', compact('lowStocks', 'salesWeek', 'salesMonth', 'user', 'department'));
     }
 
     /**
