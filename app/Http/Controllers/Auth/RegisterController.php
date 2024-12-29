@@ -36,6 +36,7 @@ class RegisterController extends Controller
             'dob' => ['required', 'date'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_name' => ['required', 'string'],
+            'location' => ['required', 'string'],
         ]);
     }
 
@@ -51,6 +52,8 @@ class RegisterController extends Controller
             'dob' => $data['dob'],
             'password' => Hash::make(value: $data['password']),
             'permission_level' => $permission_level,
+            'job_role' => $data['role_name'],
+            'location' => $data['location'],
         ]);
     }
 
@@ -67,6 +70,6 @@ class RegisterController extends Controller
 
         $this->create($request->all());
 
-        return redirect($this->redirectTo)->with('status'. 'Account has been registered');
+        return redirect($this->redirectTo)->with('status' . 'Account has been registered');
     }
 }
