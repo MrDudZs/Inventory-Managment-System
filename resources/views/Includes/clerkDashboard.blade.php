@@ -24,6 +24,7 @@
                     <label>Location: <span>{{ $user->location }}</span></label>
                     <label>Department: <span>{{ $department }}</span></label>
                 </div>
+                </div>
                 <div class="col custom-dash-cols">
                     <h4>Low Stock:</h4>
                     <hr>
