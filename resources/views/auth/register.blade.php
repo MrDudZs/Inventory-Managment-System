@@ -52,6 +52,13 @@
                                     @endforeach
                                 </select>
                                 <br>
+                                <select class="input" name="location" required>
+                                    <option value="">Select Location</option>
+                                    @foreach ($locations as $StoresAndWearhouse)
+                                        <option value="{{ $StoresAndWearhouse }}">{{ $StoresAndWearhouse }}</option>
+                                    @endforeach
+                                </select>
+                                <br>
                                 <input class="button" type="submit" value="Register">
                             </form>
                         </div>
