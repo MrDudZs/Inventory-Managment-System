@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Invoice;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\Snappy\Facades\SnappyPdf;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -65,6 +65,13 @@ class InvoiceController extends Controller
             'postcode' => $validatedData['postcode'],
         ];
 
+        // Store data in session to access when generating a pdf.
+        session([
+            'customerData' => $customerData,
+            'productData' => $productData,
+            'totalData' => $totalData,
+        ]);
+
         return view('generatePDF', [
             'customerData' => $customerData,
             'productData' => $productData,
@@ -82,11 +89,22 @@ class InvoiceController extends Controller
 
     public function submitInvoice(Request $request)
     {
-
-        $pdf = PDF::loadView('generatePDF');
-        $pdfContent = $pdf->output();
-
         $user = Auth::user();
+
+        // Retrieve data from session
+        $customerData = session('customerData');
+        $productData = session('productData');
+        $totalData = session('totalData');
+
+        $data = [
+            'customerData' => $customerData,
+            'productData' => $productData,
+            'totalData' => $totalData,
+        ];
+
+        $htmlContent = view('generatePDF', $data)->render();
+        $pdf = SnappyPdf::loadHTML($htmlContent);
+        $pdfContent = $pdf->output();
 
         Invoice::create([
             'invoiceStaff' => $user->staffID,
@@ -94,5 +112,6 @@ class InvoiceController extends Controller
             'invoiceDate' => now()->toDateString(),
         ]);
 
+        return response()->json(['message' => 'PDF generated and successfully stored.']);
     }
 }

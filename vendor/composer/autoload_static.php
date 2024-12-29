@@ -129,6 +129,10 @@ class ComposerStaticInit4e3d987329c0764f33ca5b95d0200f85
             'Laravel\\Sail\\' => 13,
             'Laravel\\Prompts\\' => 16,
         ),
+        'K' => 
+        array (
+            'Knp\\Snappy\\' => 11,
+        ),
         'I' => 
         array (
             'Illuminate\\Support\\' => 19,
@@ -171,6 +175,7 @@ class ComposerStaticInit4e3d987329c0764f33ca5b95d0200f85
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'Barryvdh\\Snappy\\' => 16,
         ),
         'A' => 
         array (
@@ -421,6 +426,10 @@ class ComposerStaticInit4e3d987329c0764f33ca5b95d0200f85
         array (
             0 => __DIR__ . '/..' . '/laravel/prompts/src',
         ),
+        'Knp\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -513,6 +522,10 @@ class ComposerStaticInit4e3d987329c0764f33ca5b95d0200f85
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'Barryvdh\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -559,6 +572,15 @@ class ComposerStaticInit4e3d987329c0764f33ca5b95d0200f85
         'App\\Repositories\\GitPathsRepository' => __DIR__ . '/..' . '/laravel/pint/app/Repositories/GitPathsRepository.php',
         'App\\ValueObjects\\Issue' => __DIR__ . '/..' . '/laravel/pint/app/ValueObjects/Issue.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Barryvdh\\Snappy\\Facades\\SnappyImage' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/Facades/SnappyImage.php',
+        'Barryvdh\\Snappy\\Facades\\SnappyPdf' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/Facades/SnappyPdf.php',
+        'Barryvdh\\Snappy\\IlluminateSnappyImage' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/IlluminateSnappyImage.php',
+        'Barryvdh\\Snappy\\IlluminateSnappyPdf' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/IlluminateSnappyPdf.php',
+        'Barryvdh\\Snappy\\ImageWrapper' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/ImageWrapper.php',
+        'Barryvdh\\Snappy\\LumenServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/LumenServiceProvider.php',
+        'Barryvdh\\Snappy\\PdfFaker' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/PdfFaker.php',
+        'Barryvdh\\Snappy\\PdfWrapper' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/PdfWrapper.php',
+        'Barryvdh\\Snappy\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src/ServiceProvider.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',
@@ -2897,6 +2919,11 @@ class ComposerStaticInit4e3d987329c0764f33ca5b95d0200f85
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Knp\\Snappy\\AbstractGenerator' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/AbstractGenerator.php',
+        'Knp\\Snappy\\Exception\\FileAlreadyExistsException' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Exception/FileAlreadyExistsException.php',
+        'Knp\\Snappy\\GeneratorInterface' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/GeneratorInterface.php',
+        'Knp\\Snappy\\Image' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Image.php',
+        'Knp\\Snappy\\Pdf' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Pdf.php',
         'Laravel\\Prompts\\Clear' => __DIR__ . '/..' . '/laravel/prompts/src/Clear.php',
         'Laravel\\Prompts\\Concerns\\Colors' => __DIR__ . '/..' . '/laravel/prompts/src/Concerns/Colors.php',
         'Laravel\\Prompts\\Concerns\\Cursor' => __DIR__ . '/..' . '/laravel/prompts/src/Concerns/Cursor.php',

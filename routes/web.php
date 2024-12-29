@@ -35,8 +35,9 @@ Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name
 
 Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
 
+Route::get('/fetch-product', [InvoiceController::class, 'fetchData'])->name('fetch-product'); 
 Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('create-invoice'); // Open the invoice form
 Route::post('/handle-invoice', [InvoiceController::class, 'handleForm'])->name('handle-invoice'); // Makes Invoice layout for PDF
-Route::get('/submit-invoice', [InvoiceController::class, 'submitInvoice'])->name('submit-invoice'); // Generate PDF edits db
+Route::post('/submit-invoice', [InvoiceController::class, 'submitInvoice'])->name('submit-invoice'); // Generate PDF edits db
 
 Auth::routes();

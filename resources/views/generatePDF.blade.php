@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories</title>
-    <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
+    <!-- <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" /> -->
 </head>
 <body>
     @include('../includes.header')
@@ -69,8 +69,9 @@
             </div>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <a class="btn btn-custom">Save Invoice</a>
+            <a class="btn btn-custom" href="{{ route('submit-invoice') }}">Save Invoice</a>
         </div>
+        <br><br>
     </main>
 </body>
 </html>
