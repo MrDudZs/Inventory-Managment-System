@@ -19,10 +19,10 @@
         <h4>User:</h4>
         <hr>
         <div class="d-grid gap-2">
-            <label>ID:</label> <span>{{ $user->id }}</span>
-            <label>Name:</label> <span>{{ $user->first_name }} {{ $user->surname }}</span>
-            <label>Location:</label> <span>{{ $user->location }}</span>
-            <label>Department:</label> <span>{{ $department }}</span>
+            <label>ID: <span>{{ $user->id }}</span></label> 
+            <label>Name: <span>{{ $user->first_name }} {{ $user->surname }}</span></label> 
+            <label>Location: <span>{{ $user->location }}</span></label> 
+            <label>Department: <span>{{ $department }}</span></label> 
         </div>
     </div>
             <div class="col custom-dash-cols">
