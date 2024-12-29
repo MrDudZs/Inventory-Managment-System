@@ -15,6 +15,16 @@
     </div>
     <div class="container">
         <div class="row">
+        <div class="col custom-dash-cols">
+        <h4>User:</h4>
+        <hr>
+        <div class="d-grid gap-2">
+            <label>ID:</label> <span>{{ $user->id }}</span>
+            <label>Name:</label> <span>{{ $user->first_name }} {{ $user->surname }}</span>
+            <label>Location:</label> <span>{{ $user->location }}</span>
+            <label>Department:</label> <span>{{ $department }}</span>
+        </div>
+    </div>
             <div class="col custom-dash-cols">
                 <h4>Low Stock:</h4>
                 <hr>

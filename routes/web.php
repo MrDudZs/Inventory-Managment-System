@@ -24,11 +24,15 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+/** 
+ * Route for Dashboard
+ */
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin-dashboard', [DashboardController::class, 'showAdminDashboard'])->name('admin.dashboard');
     Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newProduct');
     Route::get('/get-brands', [ProductController::class, 'getBrands']);
-    Route::get('/get-names', [ProductController::class, 'getNames']); });
+    Route::get('/get-names', [ProductController::class, 'getNames']);
+});
 
 /* 
 / app\Http\Controllers\ProductController
