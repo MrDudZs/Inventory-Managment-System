@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\StoreAndWearhouse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -14,7 +15,7 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     // Redirect users after registration.
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     public function __construct()
     {
@@ -51,6 +52,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $roles = Role::all();
-        return view('auth.register', compact('roles'));
+        $locations = StoreAndWearhouse::pluck('location_name');
+        return view('auth.register', compact('roles', 'locations'));
     }
 }
