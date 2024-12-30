@@ -52,9 +52,9 @@ class InvoiceController extends Controller
 
         $totalData = [
             'subTotal' => $subTotal,
-            'salesTax' => $subTotal / 5,
-            'total' => $subTotal + $subTotal / 5,
-        ];
+            'salesTax' => round($subTotal / 5, 2),
+            'total' => round($subTotal + $subTotal / 5, 2),
+        ]; 
 
         $customerData = [
             'fullName' => $validatedData['fullName'],
@@ -92,15 +92,17 @@ class InvoiceController extends Controller
         $userID = Auth::user()->id;
 
         // Retrieve data from session
-        $customerData = session('customerData');
         $productData = session('productData');
-        $totalData = session('totalData');
 
-        $data = [
-            'customerData' => $customerData,
-            'productData' => $productData,
-            'totalData' => $totalData,
-        ];
+        foreach ($productData as $product) {
+            $remove = $product->quantity;
+            $id = $product->id;
+
+            $current = Stock::where('stockID', $id)->value('stockCount');
+            
+            $newCount = $current - $remove;
+            Stock::where('stockID', $id)->update(['stockCount' => $newCount]);
+        }
 
         if ($request->hasFile('pdf')) {
             $pdf = $request->file('pdf');
