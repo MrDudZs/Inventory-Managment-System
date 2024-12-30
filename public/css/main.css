@@ -1,31 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 * {
-    font-family: "Roboto Mono", "Poppins";
+    font-family: 'Roboto Mono', 'Poppins';
 }
 :root {
     --main-bg: #242424;
-    --element-bg: #dddddd;
-    --text-bg: #ffffff;
+    --element-bg: #DDDDDD;
+    --text-bg: #FFFFFF;
     --header-bg: #034159;
-    --lighter-bg: #0cf25d;
-    --med-bg: #02735e;
+    --lighter-bg: #0CF25D;
+    --med-bg: #02735E;
 }
 body {
     background-color: var(--main-bg);
 }
-/* Index */
-.carousel-item {
-    height: 25%;
-}
-.carousel-item img {
-    background-color: #bbbbbb;
-    height: 400px;
-    object-fit: contain;
-}
-
-/* Buttons */
-.btn-custom,
-.btn-custom:hover {
+.btn-custom, .btn-custom:hover {
     background-color: var(--lighter-bg);
     border-color: var(--lighter-bg);
     color: var(--main-bg);
@@ -69,8 +57,7 @@ body {
     text-align: left;
     padding: 7px;
 }
-.productSoldStat,
-.averageStockStat {
+.productSoldStat, .averageStockStat {
     background-color: var(--lighter-bg);
     padding: 5px;
     border-radius: 5px;
@@ -107,7 +94,7 @@ body {
 }
 
 .form-check-input {
-    border-color: var(--main-bg);
+    border-color: var(--main-bg)
 }
 /* Create Invoice Form */
 .med-custom-bg {
