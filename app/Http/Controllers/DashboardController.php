@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Stock;
 use App\Models\Invoice;
+use App\Models\StoreAndWearhouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,12 +36,16 @@ class DashboardController extends Controller
      */
     public function showAdminDashboard()
     {
+        $user = Auth::user();
+
+        $department = StoreAndWearhouse::where('location_name', $user->location)->pluck('location_type')->first();
+
         $lowStocks = Stock::where('stockCount', '<', 16)->get();
         $salesWeek = $this->getSales('1 week');
         $salesMonth = $this->getSales('1 month');
         $stockType = Stock::distinct()->pluck('stockType');
 
-        return view('includes.adminDashboard', compact('lowStocks', 'salesWeek', 'salesMonth', 'stockType'));
+        return view('includes.adminDashboard', compact('lowStocks', 'salesWeek', 'salesMonth', 'stockType', 'user', 'department'));
     }
 
     /**
@@ -50,11 +55,16 @@ class DashboardController extends Controller
      */
     public function showClerkDashboard()
     {
+        $user = Auth::user();
+
+        $department = StoreAndWearhouse::where('location_name', $user->location)->pluck('location_type')->first();
+
+
         $lowStocks = Stock::where('stockCount', '<', 16)->get();
         $salesWeek = $this->getSales('1 week');
         $salesMonth = $this->getSales('1 month');
 
-        return view('includes.clerkDashboard', compact('lowStocks', 'salesWeek', 'salesMonth'));
+        return view('includes.clerkDashboard', compact('lowStocks', 'salesWeek', 'salesMonth', 'user', 'department'));
     }
 
     /**
