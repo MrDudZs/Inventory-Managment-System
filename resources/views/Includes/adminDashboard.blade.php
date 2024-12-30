@@ -15,11 +15,16 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col custom-dash-cols">
-                <h4>Low Stock:</h4>
-                <hr>
-                <?php FindLowStocks() ?>
-            </div>
+        <div class="col custom-dash-cols">
+        <h4>User:</h4>
+        <hr>
+        <div class="d-grid gap-2">
+            <label>ID: <span>{{ $user->id }}</span></label> 
+            <label>Name: <span>{{ $user->first_name }} {{ $user->surname }}</span></label> 
+            <label>Location: <span>{{ $user->location }}</span></label> 
+            <label>Department: <span>{{ $department }}</span></label> 
+        </div>
+    </div>
             <div class="col custom-dash-cols">
                 <h4>Generate Reports:</h4>
                 <hr>
@@ -33,16 +38,13 @@
                         onclick='window.location.href = "averageStockLevels.php"'>Average stock levels</button>
                 </div>
             </div>
+            
             <div class="col custom-dash-cols">
                 <h4>Products:</h4>
                 <hr>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn-dashboard" onclick='window.location.href = "addNewProduct.php"'>Add
-                        new
-                        product</button>
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "removeProduct.php"'>Remove
-                        product</button>
+                    @include('../includes.newProduct', ['stockTypes' => $stockType])
+                    @include('../includes.removeProducts')
                 </div>
             </div>
         </div>
@@ -59,8 +61,16 @@
                         onclick='window.location.href = "reports.php"'>Reports</button>
                 </div>
             </div>
-        </div>
-        <div class="row">
+            <div class="col custom-dash-cols">
+                <h4>Invoices:</h4>
+                <hr>
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn-dashboard"
+                        onclick='window.location.href = "{{ url('createInvoice') }}"'>Create Invoice</button>
+                    <button type="button" class="btn-dashboard"
+                        onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Invoice History</button>
+                </div>
+            </div>
             <div class="col-6 col-md-4 custom-dash-cols">
                 <h4>This Week:</h4>
                 <hr>
@@ -74,7 +84,17 @@
                     <p class="productSoldStat">Product Sold:<?php GetSales("1 month") ?></p>
                 </div>
             </div>
-            <div class="row">
+        </div>
+        <div class="row">
+            
+            
+            <div class="col custom-dash-cols">
+                <h4>Low Stock:</h4>
+                <hr>
+                <?php FindLowStocks() ?>
+            </div>
+        </div>
+        <div class="row">
                 <div class="col-7-5 custom-dash-cols">
                     <h4>Stock Level - Stock Sold:</h4>
                     <div class="d-grid gap-2">
@@ -82,7 +102,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         <div class="row">
             <div class="col-7-5 custom-dash-cols">
                 <h4>Average Stock - Average Sold</h4>
@@ -91,7 +110,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+        <div class="col custom-dash-cols">
+                <h4>Create User:</h4>
+                <hr>
+                <div class="d-grid gap-2">
+                <button type="button" class="btn-dashboard"
+                        onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Create User</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="{{ asset(path: 'bootstrap-5.3.3-dist/js/bootstrap.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/charts.js" defer></script>
     <?php
