@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     @include('../includes.header')
@@ -67,7 +68,7 @@
             </div>
         </div>
         <div id="page"></div>
-        <button type="submit" class="btn btn-class">Create Invoice PDF</button>
+        <button id="submit" type="submit" class="btn btn-custom">Create Invoice PDF</button>
         <br><br>
     </main>
 </body>
@@ -82,10 +83,28 @@
     };
     $('#submit').click(function () { 
         doc.fromHTML($('#content').html(), 15, 15, { 
-            'width': 190, 
-                'elementHandlers': specialElementHandlers 
+            'width': 250, 
+            'elementHandlers': specialElementHandlers 
         }); 
-        doc.save('sample-page.pdf'); 
+
+        var pdf = doc.output('blob');
+        var formData = new FormData();
+        formData.append('pdf', pdf);
+
+        fetch('/submit-invoice', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('PDF successfully saved');
+        })
+        .catch(error => {
+            alert('Error saving PDF');
+        });
     });
 </script>
 </html>

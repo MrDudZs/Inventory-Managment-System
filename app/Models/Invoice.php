@@ -8,6 +8,8 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'invoice';
     protected $fillable = [
         'invoiceStaff',

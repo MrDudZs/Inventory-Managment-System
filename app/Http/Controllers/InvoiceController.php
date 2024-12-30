@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Invoice;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -88,7 +89,7 @@ class InvoiceController extends Controller
 
     public function submitInvoice(Request $request)
     {
-        $user = Auth::user();
+        $userID = Auth::user()->id;
 
         // Retrieve data from session
         $customerData = session('customerData');
@@ -101,14 +102,18 @@ class InvoiceController extends Controller
             'totalData' => $totalData,
         ];
 
-        
+        if ($request->hasFile('pdf')) {
+            $pdf = $request->file('pdf');
 
-        Invoice::create([
-            'invoiceStaff' => $user->staffID,
-            'invoicePDF' => $pdfContent,
-            'invoiceDate' => now()->toDateString(),
-        ]);
+            Invoice::create([
+                'invoiceStaff' => $userID,
+                'invoicePDF' => $pdf,
+                'invoiceDate' => now()->toDateString(),
+            ]);
 
-        return response()->json(['message' => 'PDF generated and successfully stored.']);
+            return response()->json(['message' => 'PDF generated and successfully stored.']);
+        }
+
+        return response()->json(['message' => 'PDF not generated.']);
     }
 }
