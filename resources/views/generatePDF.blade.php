@@ -69,7 +69,10 @@
             </div>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <a class="btn btn-custom" href="{{ route('submit-invoice') }}">Save Invoice</a>
+            <form action="{{ route('submit-invoice') }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-custom">Save Invoice</button>
+            </form>
         </div>
         <br><br>
     </main>

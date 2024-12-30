@@ -103,14 +103,42 @@ class InvoiceController extends Controller
         ];
 
         $htmlContent = view('generatePDF', $data)->render();
-        $pdf = SnappyPdf::loadHTML($htmlContent);
-        $pdfContent = $pdf->output();
+        // $pdf = SnappyPdf::loadHTML($htmlContent);
+        // $pdfContent = $pdf->output();
+
+        $tempHtmlFile = tempnam(sys_get_temp_dir(), 'invoice') . '.html';
+        file_put_contents($tempHtmlFile, $htmlContent);
+    
+        // Define the output image file path
+        $outputImageFile = tempnam(sys_get_temp_dir(), 'invoice') . '.png';
+    
+        // Full path to wkhtmltoimage
+        $wkhtmltoimagePath = base_path('app\Services\wkhtmltoimage.exe');
+    
+        // Convert HTML to image using wkhtmltoimage
+        $command = "$wkhtmltoimagePath $tempHtmlFile $outputImageFile";
+        exec($command, $output, $return_var);
+    
+        if ($return_var !== 0) {
+            return response()->json(['message' => 'Failed to generate image.'], 500);
+        }
+    
+        // Check if the image file exists
+        if (!file_exists($outputImageFile)) {
+            return response()->json(['message' => 'Image file not found.'], 500);
+        }
+    
+        // Read the image content
+        $imageContent = file_get_contents($outputImageFile);
 
         Invoice::create([
             'invoiceStaff' => $user->staffID,
             'invoicePDF' => $pdfContent,
             'invoiceDate' => now()->toDateString(),
         ]);
+
+        unlink($tempHTMLFile);
+        unlink($outputImageFile);
 
         return response()->json(['message' => 'PDF generated and successfully stored.']);
     }
