@@ -3,7 +3,7 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{{ url('/') }}">IMS</a>
+    <a class="navbar-brand" href="{{ route('index') }}">IMS</a>
     @if (Auth::check())
         <form action="{{ route('logout') }}" method="post" class="d-inline">
             @csrf
