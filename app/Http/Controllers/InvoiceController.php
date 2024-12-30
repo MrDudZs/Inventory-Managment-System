@@ -67,9 +67,7 @@ class InvoiceController extends Controller
 
         // Store data in session to access when generating a pdf.
         session([
-            'customerData' => $customerData,
             'productData' => $productData,
-            'totalData' => $totalData,
         ]);
 
         return view('generatePDF', [
