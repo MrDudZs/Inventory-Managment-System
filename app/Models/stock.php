@@ -10,12 +10,13 @@ class Stock extends Model
 
     use HasFactory;
 
-    protected $table = 'stock';
     protected $primaryKey = 'stockID';
-
+  
     public $timestamps = false;
 
+    protected $table = 'stock';
     protected $fillable = [
+        'stockID',
         'stockName',
         'stockCount',
         'stockType',
