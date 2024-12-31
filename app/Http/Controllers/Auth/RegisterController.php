@@ -5,16 +5,22 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\StoreAndWearhouse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
-    use RegistersUsers;
-
-    // Redirect users after registration.
-    protected $redirectTo = '/home';
+    /**
+     * Summary of redirectTo
+     * To redirected back to account creation
+     * 
+     * @var string
+     */
+    protected $redirectTo = '/register';
 
     public function __construct()
     {
@@ -30,6 +36,7 @@ class RegisterController extends Controller
             'dob' => ['required', 'date'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_name' => ['required', 'string'],
+            'location' => ['required', 'string'],
         ]);
     }
 
@@ -45,12 +52,24 @@ class RegisterController extends Controller
             'dob' => $data['dob'],
             'password' => Hash::make(value: $data['password']),
             'permission_level' => $permission_level,
+            'job_role' => $data['role_name'],
+            'location' => $data['location'],
         ]);
     }
 
     public function showRegistrationForm()
     {
         $roles = Role::all();
-        return view('auth.register', compact('roles'));
+        $locations = StoreAndWearhouse::pluck('location_name');
+        return view('auth.register', compact('roles', 'locations'));
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $this->create($request->all());
+
+        return redirect($this->redirectTo)->with('status' . 'Account has been registered');
     }
 }
