@@ -113,3 +113,9 @@ body {
 .med-custom-bg {
     background-color: var(--med-bg);
 }
+
+.productForm{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
