@@ -8,7 +8,7 @@
         <form action="{{ route('logout') }}" method="post" class="d-inline">
             @csrf
             <button class="btn btn-success my-2 my-sm-0 me-2" type="submit">
-                Logged in: {{ Auth::user()->email }}
+                Logout: {{ Auth::user()->email }}
             </button>
         </form>
     @else
