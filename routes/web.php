@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\CheckPermission;
+use App\Http\Middleware\ForceLogout;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
@@ -28,9 +30,18 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
  * Route for Dashboard
  */
 Route::middleware(['auth'])->group(function () {
-    Route::get('/clerk-dashboard', [DashboardController::class, 'showClerkDashboard'])->name('clerk.dashboard');
-    Route::get('/admin-dashboard', [DashboardController::class, 'showAdminDashboard'])->name('admin.dashboard');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/clerk-dashboard', [DashboardController::class, 'showClerkDashboard'])
+        ->name('clerk.dashboard')
+        ->middleware(CheckPermission::class . ':1');
+
+    Route::get('/admin-dashboard', [DashboardController::class, 'showAdminDashboard'])
+        ->name('admin.dashboard')
+        ->middleware(CheckPermission::class . ':2');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard')
+        ->middleware(ForceLogout::class);
+
     Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name('submit-category');
     Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newProduct');
     Route::get('/get-brands', [ProductController::class, 'getBrands']);
