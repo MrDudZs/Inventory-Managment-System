@@ -54,7 +54,7 @@
                 <hr>
                 <div class="d-grid gap-2">
                     <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "orderTransactions.php"'>Order transactions</button>
+                        onclick='window.location.href = "orderTransactions.php"'>Stock Orders</button>
                     <button type="button" class="btn-dashboard"
                         onclick='window.location.href = "invoiceHistory.php"'>Invoices</button>
                     <button type="button" class="btn-dashboard"
