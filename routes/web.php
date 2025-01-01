@@ -44,11 +44,16 @@ Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newP
 Route::get('/newProduct', [ProductController::class, 'newProduct'])->name('showNewProductForm');
 Route::get('/get-brands', [ProductController::class, 'getBrands']);
 Route::get('/get-names', [ProductController::class, 'getNames']);
-
 Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
 Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('createInvoice');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
 Route::get('/invoice-form', [InvoiceController::class, 'form'])->name('invoiceForm');
+
+/*
+    app\http\controllers\CategoryController
+*/
+Route::get('/categories', [CategoryController::class, 'index'])->name('dashboard');
+
 
 Auth::routes();

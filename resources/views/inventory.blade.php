@@ -9,14 +9,14 @@
     <link href="css/main.css" rel="stylesheet" />
 </head>
     <body>
-        <?php
-            include("php/Includes/header.php");
-        ?>
+    <div class="header">
+        @include('../includes.header')
+    </div>
         <main>
             <br><br>
             <div class="container">
                 <a href="/categories" class="btn btn-light"><< Back to Categories</a>
-                <a href="dashboard.php" class="btn btn-light"><< Back to Dashboard</a>
+                <a href="/clerk-dashboard" class="btn btn-light"><< Back to Dashboard</a>
                 <br><br>
                 @php 
                     $count = 0;
