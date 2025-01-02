@@ -30,7 +30,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::get('/clerk-dashboard', [DashboardController::class, 'showClerkDashboard'])->name('clerk.dashboard');
     Route::get('/admin-dashboard', [DashboardController::class, 'showAdminDashboard'])->name('admin.dashboard');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
     Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name('submit-category');
     Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newProduct');
     Route::get('/get-brands', [ProductController::class, 'getBrands']);
