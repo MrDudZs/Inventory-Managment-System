@@ -12,6 +12,8 @@
     <main>
         <br>
         <div class="container">
+        <a href="{{ route('dashboard') }}" class="btn btn-light"><< Back to Dashboard</a>
+            <br>
             <form action="{{ route('handle-invoice') }}" method="post" class="productForm">
                 @csrf
                 <div class="d-grid gap-2 col-6 mx-auto">
