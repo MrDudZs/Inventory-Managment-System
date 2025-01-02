@@ -100,7 +100,7 @@
         })
         .then(response => response.json())
         .then(data => {
-            alert('PDF successfully saved');
+            alert('Invoice PDF successfully saved');
         })
         .catch(error => {
             alert('Error saving PDF');
