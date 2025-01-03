@@ -15,16 +15,16 @@
     </div>
     <div class="container">
         <div class="row">
-        <div class="col custom-dash-cols">
-        <h4>User:</h4>
-        <hr>
-        <div class="d-grid gap-2">
-            <label>ID: <span>{{ $user->id }}</span></label> 
-            <label>Name: <span>{{ $user->first_name }} {{ $user->surname }}</span></label> 
-            <label>Location: <span>{{ $user->location }}</span></label> 
-            <label>Department: <span>{{ $department }}</span></label> 
-        </div>
-    </div>
+            <div class="col custom-dash-cols">
+                <h4>User:</h4>
+                <hr>
+                <div class="d-grid gap-2">
+                    <label>ID: <span>{{ $user->id }}</span></label>
+                    <label>Name: <span>{{ $user->first_name }} {{ $user->surname }}</span></label>
+                    <label>Location: <span>{{ $user->location }}</span></label>
+                    <label>Department: <span>{{ $department }}</span></label>
+                </div>
+            </div>
             <div class="col custom-dash-cols">
                 <h4>Generate Reports:</h4>
                 <hr>
@@ -38,7 +38,7 @@
                         onclick='window.location.href = "averageStockLevels.php"'>Average stock levels</button>
                 </div>
             </div>
-            
+
             <div class="col custom-dash-cols">
                 <h4>Products:</h4>
                 <hr>
@@ -54,8 +54,8 @@
                 <h4>History: </h4>
                 <hr>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = ""'>Stock Orders</button>
+                    <button type="button" class="btn-dashboard" onclick='window.location.href = ""'>Stock
+                        Orders</button>
                     <button type="button" class="btn-dashboard"
                         onclick='window.location.href = "invoiceHistory.php"'>Invoices</button>
                     <button type="button" class="btn-dashboard"
@@ -87,8 +87,8 @@
             </div>
         </div>
         <div class="row">
-            
-            
+
+
             <div class="col custom-dash-cols">
                 <h4>Low Stock:</h4>
                 <hr>
@@ -96,13 +96,13 @@
             </div>
         </div>
         <div class="row">
-                <div class="col-7-5 custom-dash-cols">
-                    <h4>Stock Level - Stock Sold:</h4>
-                    <div class="d-grid gap-2">
-                        <canvas id="barChart" width="50" height="25"></canvas>
-                    </div>
+            <div class="col-7-5 custom-dash-cols">
+                <h4>Stock Level - Stock Sold:</h4>
+                <div class="d-grid gap-2">
+                    <canvas id="barChart" width="50" height="25"></canvas>
                 </div>
             </div>
+        </div>
         <div class="row">
             <div class="col-7-5 custom-dash-cols">
                 <h4>Average Stock - Average Sold</h4>
@@ -112,11 +112,11 @@
             </div>
         </div>
         <div class="row">
-        <div class="col custom-dash-cols">
+            <div class="col custom-dash-cols">
                 <h4>Create User:</h4>
                 <hr>
                 <div class="d-grid gap-2">
-                <button type="button" class="btn-dashboard"
+                    <button type="button" class="btn-dashboard"
                         onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Create User</button>
                 </div>
             </div>
@@ -125,7 +125,8 @@
 
     <script src="{{ asset(path: 'bootstrap-5.3.3-dist/js/bootstrap.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/charts.js" defer></script>
+    <script src="{{ asset('js/donutchart.js') }} "></script>
+    <script src="{{ asset('js/barchart.js') }}"></script>
     <?php
 function FindLowStocks()
 {

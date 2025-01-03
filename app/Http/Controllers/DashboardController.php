@@ -86,4 +86,14 @@ class DashboardController extends Controller
 
         return $sales ?? 0;
     }
+
+    public function getStockData(){
+        $stocks = Stock::select('stockName', 'stockCount', 'stockSold')->get();
+        return response()->json($stocks);
+    }
+
+    public function getSalesData(){
+        $stocks = Stock::select('stockCount', 'stockSold')->get();
+        return response()->json($stocks);
+    }
 }
