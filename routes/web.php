@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name('submit-category');
     Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newProduct');
+    Route::post('/manageProduct', [ProductController::class, 'manageProduct'])->name('manageProduct');
     Route::get('/get-brands', [ProductController::class, 'getBrands']);
     Route::get('/get-names', [ProductController::class, 'getNames']);
 });

@@ -44,7 +44,8 @@
                 <hr>
                 <div class="d-grid gap-2">
                     @include('../includes.newProduct', ['stockTypes' => $stockType])
-                    @include('../includes.removeProducts')
+                    @include('../includes.removeProducts', ['stockTypes' => $stockType])
+                    @include('../includes.manageProducts', ['stockTypes' => $stockType])
                 </div>
             </div>
         </div>
@@ -54,7 +55,7 @@
                 <hr>
                 <div class="d-grid gap-2">
                     <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "orderTransactions.php"'>Stock Orders</button>
+                        onclick='window.location.href = ""'>Stock Orders</button>
                     <button type="button" class="btn-dashboard"
                         onclick='window.location.href = "invoiceHistory.php"'>Invoices</button>
                     <button type="button" class="btn-dashboard"

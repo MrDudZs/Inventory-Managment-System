@@ -1,5 +1,5 @@
 <button type="button" class="btn-dashboard" data-bs-toggle="modal" data-bs-target="#newProduct">
-    Add Product
+    Add Stock
 </button>
 
 <div class="modal fade" id="newProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
