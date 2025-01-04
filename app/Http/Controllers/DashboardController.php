@@ -40,7 +40,7 @@ class DashboardController extends Controller
 
         $department = StoreAndWearhouse::where('location_name', $user->location)->pluck('location_type')->first();
 
-        $lowStocks = Stock::where('stockCount', '<', 16)->get();
+        $lowStocks = $this->getLowStocks();
         $cumulativeSalesWeek = $this->getCumulativeSales('1 week');
         $averageStockWeek = $this->getAverageStock('1 week');
         $cumulativeSalesMonth = $this->getCumulativeSales('1 month');
@@ -62,7 +62,7 @@ class DashboardController extends Controller
         
         $department = StoreAndWearhouse::where('location_name', $user->location)->pluck('location_type')->first();
         
-        $lowStocks = Stock::where('stockCount', '<', 16)->get();
+        $lowStocks = $this->getLowStocks();
         $cumulativeSalesWeek = $this->getCumulativeSales('1 week');
         $averageStockWeek = $this->getAverageStock('1 week');
         $cumulativeSalesMonth = $this->getCumulativeSales('1 month');
@@ -72,12 +72,10 @@ class DashboardController extends Controller
     }
 
     /**
-     * Get sales data for a given time period.
-     *
-     * @param string $timeScale
-     * @return float
+     * Summary of getCumulativeSales
+     * @param mixed $timeScale
+     * @return string
      */
-
     private function getCumulativeSales($timeScale)
     {
         $currentDate = now();
@@ -92,7 +90,11 @@ class DashboardController extends Controller
         return number_format($sales ?? 0.0, 2, '.', '');
     }
 
-
+    /**
+     * Summary of getAverageStock
+     * @param mixed $timeScale
+     * @return float|int
+     */
     private function getAverageStock($timeScale)
     {
         $currentDate = now();
@@ -116,13 +118,27 @@ class DashboardController extends Controller
     }
 
 
+    /**
+     * Summary of getLowStocks
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    private function getLowStocks (){
+        return Stock::where('stockCount', '<', 16)->get();
+    }
 
+    /**
+     * Summary of getStockData
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function getStockData()
     {
         $stocks = Stock::select('stockName', 'stockCount', 'stockSold')->get();
         return response()->json($stocks);
     }
-
+    /**
+     * Summary of getSalesData
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function getSalesData()
     {
         $stocks = Stock::select('stockCount', 'stockSold')->get();
