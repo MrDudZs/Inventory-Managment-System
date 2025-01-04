@@ -74,10 +74,16 @@ Route::get('/newProduct', [ProductController::class, 'newProduct'])->name('showN
 Route::get('/get-brands', [ProductController::class, 'getBrands']);
 Route::get('/get-names', [ProductController::class, 'getNames']);
 Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
-Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('createInvoice');
+
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name('submit-category');
+
 Route::get('/sysadmin', [AdminController::class, 'index'])->name('sysAdmin');
-Route::get('/invoice-form', [InvoiceController::class, 'form'])->name('invoiceForm');
+
+Route::get('/fetch-product', [InvoiceController::class, 'fetchData'])->name('fetch-product'); 
+Route::get('/create-invoice', [InvoiceController::class, 'create'])->name('create-invoice'); // Open the invoice form
+Route::post('/handle-invoice', [InvoiceController::class, 'handleForm'])->name('handle-invoice'); // Makes Invoice layout for PDF
+Route::post('/submit-invoice', [InvoiceController::class, 'submitInvoice'])->name('submit-invoice'); // Generate PDF edits db
 
 /*
     app\http\controllers\CategoryController

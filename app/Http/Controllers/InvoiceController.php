@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 use App\Models\Stock;
+use App\Models\Invoice;
+use Illuminate\Support\Facades\Log;
+
+use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
@@ -49,9 +53,9 @@ class InvoiceController extends Controller
 
         $totalData = [
             'subTotal' => $subTotal,
-            'salesTax' => $subTotal / 5,
-            'total' => $subTotal + $subTotal / 5,
-        ];
+            'salesTax' => round($subTotal / 5, 2),
+            'total' => round($subTotal + $subTotal / 5, 2),
+        ]; 
 
         $customerData = [
             'fullName' => $validatedData['fullName'],
@@ -61,6 +65,11 @@ class InvoiceController extends Controller
             'city' => $validatedData['city'],
             'postcode' => $validatedData['postcode'],
         ];
+
+        // Store data in session to access when generating a pdf.
+        session([
+            'productData' => $productData,
+        ]);
 
         return view('generatePDF', [
             'customerData' => $customerData,
@@ -89,5 +98,36 @@ class InvoiceController extends Controller
         $invoices = $query->get();
 
         return view('invoiceHistory', compact('invoices'));
+      
+    public function submitInvoice(Request $request)
+    {
+        $userID = Auth::user()->id;
+
+        // Retrieve data from session
+        $productData = session('productData');
+
+        foreach ($productData as $product) {
+            $remove = $product->quantity;
+            $id = $product->id;
+
+            $current = Stock::where('stockID', $id)->value('stockCount');
+            
+            $newCount = $current - $remove;
+            Stock::where('stockID', $id)->update(['stockCount' => $newCount]);
+        }
+
+        if ($request->hasFile('pdf')) {
+            $pdf = $request->file('pdf');
+
+            Invoice::create([
+                'invoiceStaff' => $userID,
+                'invoicePDF' => $pdf,
+                'invoiceDate' => now()->toDateString(),
+            ]);
+
+            return response()->json(['message' => 'PDF generated and successfully stored.']);
+        }
+
+        return response()->json(['message' => 'PDF not generated.']);
     }
 }

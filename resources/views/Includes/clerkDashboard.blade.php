@@ -50,6 +50,32 @@
                         onclick='window.location.href = "{{ url('categories') }}"'>Categories</button>
                     <button type="button" class="btn-dashboard"
                         onclick='window.location.href = "{{ url('search') }}"'>Search</button>
+                <div class="col custom-dash-cols">
+                    <h4>Low Stock:</h4>
+                    <hr>
+                    @foreach ($lowStocks as $stock)
+                        <p>{{ $stock->stockBrand }}, {{ $stock->stockName }}. Stock left: {{ $stock->stockCount }}</p>
+                    @endforeach
+                </div>
+                <div class="col custom-dash-cols">
+                    <h4>Invoices:</h4>
+                    <hr>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn-dashboard"
+                            onclick='window.location.href = "{{ url('create-invoice') }}"'>Create Invoice</button>
+                        <button type="button" class="btn-dashboard"
+                            onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Invoice History</button>
+                    </div>
+                </div>
+                <div class="col custom-dash-cols">
+                    <h4>Products:</h4>
+                    <hr>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn-dashboard"
+                            onclick='window.location.href = "{{ url('categories') }}"'>Categories</button>
+                        <button type="button" class="btn-dashboard"
+                            onclick='window.location.href = "{{ url('search') }}"'>Search</button>
+                    </div>
                 </div>
             </div>
         </div>

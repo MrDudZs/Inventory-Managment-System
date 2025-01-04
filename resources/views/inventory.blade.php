@@ -17,6 +17,11 @@
             <div class="container">
                 <a href="/categories" class="btn btn-light"><< Back to Categories</a>
                 <a href="/clerk-dashboard" class="btn btn-light"><< Back to Dashboard</a>
+        <main>
+            <br><br>
+            <div class="container">
+                <a href="{{ route('categories') }}" class="btn btn-light"><< Back to Categories</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-light"><< Back to Dashboard</a>
                 <br><br>
                 @php 
                     $count = 0;

@@ -7,13 +7,14 @@
     <link href="css/main.css" rel="stylesheet" />
 </head>
 <body>
-    <?php
-        include("php/Includes/header.php");
-    ?>
+    @include('../includes.header')
+
     <main>
         <br>
         <div class="container">
-            <form action="{{ route('submit-invoiceForm') }}" method="post" class="productForm">
+        <a href="{{ route('dashboard') }}" class="btn btn-light"><< Back to Dashboard</a>
+            <br>
+            <form action="{{ route('handle-invoice') }}" method="post" class="productForm">
                 @csrf
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <input type="submit" value="Create Invoice" class="btn btn-custom btn-create">
