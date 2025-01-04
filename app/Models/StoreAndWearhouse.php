@@ -1,20 +1,18 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Invoice extends Model
+class StoreAndWearhouse extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    protected $table = 'store_and_warehouses';
 
-    protected $table = 'invoice';
     protected $fillable = [
-        'invoiceStaff',
-        'invoicePDF',
-        'invoiceDate'
+        'location_name',
+        'location_type',
     ];
 }
-

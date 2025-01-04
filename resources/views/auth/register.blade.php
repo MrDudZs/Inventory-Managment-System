@@ -12,6 +12,7 @@
     <main>
         <br><br>
         <div class="container">
+            <a href="{{ route('admin.dashboard') }}" class="btn btn-light">Back to Dashboard</a>
             <div class="row">
                 <div class="col custom-dash-cols">
                     <h4>Create Account</h4>
@@ -49,6 +50,13 @@
                                     <option value="">Select Role</option>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                                <br>
+                                <select class="input" name="location" required>
+                                    <option value="">Select Location</option>
+                                    @foreach ($locations as $StoresAndWearhouse)
+                                        <option value="{{ $StoresAndWearhouse }}">{{ $StoresAndWearhouse }}</option>
                                     @endforeach
                                 </select>
                                 <br>

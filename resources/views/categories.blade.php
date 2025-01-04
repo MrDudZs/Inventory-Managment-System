@@ -8,13 +8,13 @@
     <link href="css/main.css" rel="stylesheet" />
 </head>
     <body>
-        <?php
-            include("php/includes/header.php");
-        ?>
+    <div class="header">
+        @include('../includes.header')
+    </div>
         <main>
             <br><br>
             <div class="container">
-                <a href="{{ route('dashboard') }}" class="btn btn-light"><< Back to Dashboard</a>
+                <a href="{{ route('clerk.dashboard') }}" class="btn btn-light"><< Back to Dashboard</a>
                 <br><br>
                 <form action="{{ route('submit-category') }}" method="post">   
                     @csrf
