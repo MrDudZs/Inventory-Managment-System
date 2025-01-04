@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard</title>
     <link href="{{ asset(path: 'bootstrap-5.3.3-dist/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset(path: 'css/main.css') }}" rel="stylesheet" />
@@ -32,10 +33,8 @@
                     <button type="button" class="btn-dashboard"
                         onclick='window.location.href = "productSales.php"'>Product
                         sales</button>
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "inventoryLevels.php"'>Inventory levels</button>
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "averageStockLevels.php"'>Average stock levels</button>
+                    <button type="button" class="btn-dashboard" id="stock-report">Inventory levels</button>
+                    <button type="button" class="btn-dashboard" id="avg-sales-history">Average stock levels</button>
                 </div>
             </div>
 
@@ -54,12 +53,9 @@
                 <h4>History: </h4>
                 <hr>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn-dashboard" onclick='window.location.href = ""'>Stock
-                        Orders</button>
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "invoiceHistory.php"'>Invoices</button>
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "reports.php"'>Reports</button>
+                    <button type="button" id="invoiceHistory" class="btn-dashboard">Invoices</button>
+                    <button type="button" id="stockReportHistory" class="btn-dashboard">Stock - Sales</button>
+                    <button type="button" id="salesReportHistory" class="btn-dashboard">Avg Sales Reports</button>
                 </div>
             </div>
             <div class="col custom-dash-cols">
@@ -118,8 +114,7 @@
                 <h4>Create User:</h4>
                 <hr>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Create User</button>
+                <a href="{{ route('register') }}" class="btn btn-light">Create User</a>
                 </div>
             </div>
         </div>
@@ -129,6 +124,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ asset('js/donutchart.js') }} "></script>
     <script src="{{ asset('js/barchart.js') }}"></script>
+    <script src="{{ asset('js/stockReport.js') }}"></script>
+    <script src="{{ asset('js/salesAvgReport.js')}}"></script>
+    <script>
+        document.getElementById('stockReportHistory').addEventListener('click', function () {
+            window.location.href =
+                " {{ url('/stock-history') }}";
+        });
+        document.getElementById('salesReportHistory').addEventListener('click', function () {
+            window.location.href = "{{ url('/avg-sales-history') }}";
+        });
+
+        document.getElementById('invoiceHistory').addEventListener('click', function () {
+            window.location.href = "{{ url('/invoice-history') }}";
+        }); 
+    </script>
 </body>
 
 </html>

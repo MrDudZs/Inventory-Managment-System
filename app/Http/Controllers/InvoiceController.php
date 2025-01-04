@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 
 class InvoiceController extends Controller
 {
-    public function create() 
+    public function create()
     {
         return view('createInvoice');
     }
 
-    public function handleForm(Request $request) 
+    public function handleForm(Request $request)
     {
         $validatedData = $request->validate([
             'fullName' => 'required|string',
@@ -68,11 +69,25 @@ class InvoiceController extends Controller
         ]);
     }
 
-    public function fetchData(Request $request) 
+    public function fetchData(Request $request)
     {
         $value = $request->input('value');
         $data = Stock::where('stockType', $value)->select('stockId', 'stockName')->get();
 
         return response()->json($data);
+    }
+
+    public function showInvoiceHistory(Request $request)
+    {
+        $monthFilter = $request->query('month');
+        $query = Invoice::query();
+
+        if ($monthFilter) {
+            $query->whereMonth('invoiceDate', $monthFilter);
+        }
+
+        $invoices = $query->get();
+
+        return view('invoiceHistory', compact('invoices'));
     }
 }

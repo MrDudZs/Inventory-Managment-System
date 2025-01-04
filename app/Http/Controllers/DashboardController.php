@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StockReport;
 use App\Models\Stock;
 use App\Models\Invoice;
 use App\Models\StoreAndWearhouse;
@@ -57,11 +58,11 @@ class DashboardController extends Controller
      */
     public function showClerkDashboard()
     {
-        
+
         $user = Auth::user();
-        
+
         $department = StoreAndWearhouse::where('location_name', $user->location)->pluck('location_type')->first();
-        
+
         $lowStocks = $this->getLowStocks();
         $cumulativeSalesWeek = $this->getCumulativeSales('1 week');
         $averageStockWeek = $this->getAverageStock('1 week');
@@ -122,7 +123,8 @@ class DashboardController extends Controller
      * Summary of getLowStocks
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    private function getLowStocks (){
+    private function getLowStocks()
+    {
         return Stock::where('stockCount', '<', 16)->get();
     }
 
@@ -143,5 +145,20 @@ class DashboardController extends Controller
     {
         $stocks = Stock::select('stockCount', 'stockSold')->get();
         return response()->json($stocks);
+    }
+
+    public function saveStockReport(Request $request)
+    {
+        $data = $request->all();
+        foreach ($data as $item) {
+            StockReport::create([
+                'report_generated' => now()->format('Y-m-d'),
+                'generation_time' => now()->format('H:i:s'),
+                'stock_type' => $item['stockName'],
+                'stock_level' => $item['stockCount'],
+                'sales_level' => $item['stockSold'],
+            ]);
+        }
+        return response()->json(['message' => 'Stock report saved']);
     }
 }

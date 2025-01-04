@@ -41,7 +41,7 @@ class ProductController extends Controller
             ->first();
 
         if ($stock) {
-            $stock->stockCount -= $validated['prodAmount'];
+            $stock->stockCount += $validated['prodAmount'];
             $stock->save();
         }
 
