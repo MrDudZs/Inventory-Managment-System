@@ -54,7 +54,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('sales-data', [DashboardController::class, 'getSalesData'])->middleware('auth');
 
     Route::post('/submit-category', [CategoryController::class, 'handleForm'])->name('submit-category');
-    Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newProduct');
+    Route::post('/addStock', [ProductController::class, 'addStock'])->name('addStock');
+    Route::post('/removeStock', [ProductController::class, 'removeStock'])->name('removeStock');
+    Route::post('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
     Route::post('/manageProduct', [ProductController::class, 'manageProduct'])->name('manageProduct');
     Route::get('/get-brands', [ProductController::class, 'getBrands']);
     Route::get('/get-names', [ProductController::class, 'getNames']);
@@ -69,8 +71,8 @@ Route::get('/invoice-history', [InvoiceController::class, 'showInvoiceHistory'])
 /* 
 / app\Http\Controllers\ProductController
 */
-Route::post('/newProduct', [ProductController::class, 'newProduct'])->name('newProduct');
-Route::get('/newProduct', [ProductController::class, 'newProduct'])->name('showNewProductForm');
+Route::post('/addStock', [ProductController::class, 'addStock'])->name('addStock');
+Route::get('/addStock', [ProductController::class, 'addStock'])->name('showNewStockForm');
 Route::get('/get-brands', [ProductController::class, 'getBrands']);
 Route::get('/get-names', [ProductController::class, 'getNames']);
 Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');

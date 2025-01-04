@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 use App\Models\Stock;
-use App\Models\Invoice;
 use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Auth;
@@ -98,7 +97,7 @@ class InvoiceController extends Controller
         $invoices = $query->get();
 
         return view('invoiceHistory', compact('invoices'));
-      
+    }
     public function submitInvoice(Request $request)
     {
         $userID = Auth::user()->id;
