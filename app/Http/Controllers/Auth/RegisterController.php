@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\StoreAndWearhouse;
+use App\Http\Middleware\CheckPermission;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 
@@ -24,7 +26,8 @@ class RegisterController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
+        $this->middleware(CheckPermission::class . ':2');
     }
 
     protected function validator(array $data)
@@ -59,6 +62,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
+
         $roles = Role::all();
         $locations = StoreAndWearhouse::pluck('location_name');
         return view('auth.register', compact('roles', 'locations'));
@@ -66,6 +70,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+
         $this->validator($request->all())->validate();
 
         $this->create($request->all());

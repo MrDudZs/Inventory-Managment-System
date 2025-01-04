@@ -12,6 +12,7 @@
     <main>
         <br><br>
         <div class="container">
+            <a href="{{ route('admin.dashboard') }}" class="btn btn-light">Back to Dashboard</a>
             <div class="row">
                 <div class="col custom-dash-cols">
                     <h4>Create Account</h4>

@@ -1,5 +1,5 @@
 <button type="button" class="btn-dashboard" data-bs-toggle="modal" data-bs-target="#newProduct">
-    Add Product
+    Add Stock
 </button>
 
 <div class="modal fade" id="newProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -13,21 +13,30 @@
             <div class="modal-body">
                 <form action="{{ route('newProduct') }}" method="post">
                     @csrf
+                    <div class = "productForm">
                     <label for="prodType">{{ __('Product Type') }}</label>
                     <select id="prodType" name="prodType" required>
                         <option value="">Select Product Type</option>
                         @foreach ($stockTypes as $type) 
                             <option value="{{ $type }}">{{ $type }}</option>
                         @endforeach
-                    </select> <br> <label for="prodBrand">{{ __('Product Brand') }}</label> <select id="prodBrand"
+                    </select>
+                    </div> 
+                    <div class = "productForm">
+                     <label for="prodBrand">{{ __('Product Brand') }}</label> <select id="prodBrand"
                         name="prodBrand" required>
                         <option value="">Select Product Brand</option>
-                    </select> <br> <label for="prodName">{{ __('Product Name') }}</label> <select id="prodName"
+                    </select></div>
+                     <div class = "productForm">
+                     <label for="prodName">{{ __('Product Name') }}</label> <select id="prodName"
                         name="prodName" required>
                         <option value="">Select Product Name</opti on>
-                    </select> <br> <label for="prodAmount">{{ __('Product Amount') }}</label>
+                    </select>
+                    </div>
+                     <div class = "productForm">
+                         <label for="prodAmount">{{ __('Product Amount') }}</label>
                     <input type="number" id="prodAmount" name="prodAmount" min="1" max="999" required>
-                    <br>
+                    </div>
                     <button type="submit" class="btn btn-primary">Add Product</button>
                 </form>
             </div>

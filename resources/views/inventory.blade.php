@@ -9,8 +9,14 @@
     <link href="css/main.css" rel="stylesheet" />
 </head>
     <body>
+    <div class="header">
         @include('../includes.header')
-
+    </div>
+        <main>
+            <br><br>
+            <div class="container">
+                <a href="/categories" class="btn btn-light"><< Back to Categories</a>
+                <a href="/clerk-dashboard" class="btn btn-light"><< Back to Dashboard</a>
         <main>
             <br><br>
             <div class="container">

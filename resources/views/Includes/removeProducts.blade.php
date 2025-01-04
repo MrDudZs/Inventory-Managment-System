@@ -1,5 +1,5 @@
 <button type="button" class="btn-dashboard" data-bs-toggle="modal" data-bs-target="#removeProduct">
-    Remove Products
+    Remove Stock
 </button>
 
 <div class="modal fade" id="removeProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
