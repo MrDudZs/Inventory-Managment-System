@@ -9,7 +9,7 @@ class Stock extends Model
 {
 
     use HasFactory;
-
+  
     protected $primaryKey = 'stockID';
   
     public $timestamps = false;
