@@ -37,7 +37,7 @@
                 <hr>
                 <div class="d-grid gap-2">
                     <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "{{ url('createInvoice') }}"'>Create Invoice</button>
+                        onclick='window.location.href = "{{ url('create-invoice') }}"'>Create Invoice</button>
                     <button type="button" class="btn-dashboard"
                         onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Invoice History</button>
                 </div>
