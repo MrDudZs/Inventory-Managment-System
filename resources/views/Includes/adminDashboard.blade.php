@@ -30,9 +30,6 @@
                 <h4>Generate Reports:</h4>
                 <hr>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "productSales.php"'>Product
-                        sales</button>
                     <button type="button" class="btn-dashboard" id="stock-report">Inventory levels</button>
                     <button type="button" class="btn-dashboard" id="avg-sales-history">Average stock levels</button>
                 </div>
