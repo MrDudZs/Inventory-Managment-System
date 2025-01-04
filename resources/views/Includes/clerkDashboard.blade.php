@@ -38,8 +38,8 @@
                 <div class="d-grid gap-2">
                     <button type="button" class="btn-dashboard"
                         onclick='window.location.href = "{{ url('create-invoice') }}"'>Create Invoice</button>
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Invoice History</button>
+
+                    <button type="button" id="invoiceHistory" class="btn-dashboard">Invoices</button>
                 </div>
             </div>
             <div class="col custom-dash-cols">
@@ -73,5 +73,10 @@
 </body>
 
 <script src="{{ asset(path: 'bootstrap-5.3.3-dist/js/bootstrap.js') }}"></script>
+<script>
+    document.getElementById('invoiceHistory').addEventListener('click', function () {
+        window.location.href = "{{ url('/invoice-history') }}";
+    }); 
+</script>
 
 </html>
