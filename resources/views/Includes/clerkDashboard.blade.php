@@ -42,7 +42,16 @@
                         onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Invoice History</button>
                 </div>
             </div>
-
+            <div class="col custom-dash-cols">
+                <h4>Products:</h4>
+                <hr>
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn-dashboard"
+                        onclick='window.location.href = "{{ url('categories') }}"'>Categories</button>
+                    <button type="button" class="btn-dashboard"
+                        onclick='window.location.href = "{{ url('search') }}"'>Search</button>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-7-5 custom-dash-cols">
                     <h4>This Week:</h4>
