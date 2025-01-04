@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Stock;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 
@@ -109,5 +110,11 @@ class ProductController extends Controller
         }
 
         return redirect()->back()->with('success', 'Product stuck updated.');
+    }
+
+    public function sales()
+    {
+        $dashboardController = new DashboardController();
+        $salesWeek = $dashboardController->getSales('1 week');
     }
 }

@@ -41,11 +41,13 @@ class DashboardController extends Controller
         $department = StoreAndWearhouse::where('location_name', $user->location)->pluck('location_type')->first();
 
         $lowStocks = Stock::where('stockCount', '<', 16)->get();
-        $salesWeek = $this->getSales('1 week');
-        $salesMonth = $this->getSales('1 month');
+        $cumulativeSalesWeek = $this->getCumulativeSales('1 week');
+        $averageStockWeek = $this->getAverageStock('1 week');
+        $cumulativeSalesMonth = $this->getCumulativeSales('1 month');
+        $averageStockMonth = $this->getAverageStock('1 month');
         $stockType = Stock::distinct()->pluck('stockType');
 
-        return view('includes.adminDashboard', compact('lowStocks', 'salesWeek', 'salesMonth', 'stockType', 'user', 'department'));
+        return view('includes.adminDashboard', compact('lowStocks', 'cumulativeSalesWeek', 'averageStockWeek', 'cumulativeSalesMonth', 'averageStockMonth', 'stockType', 'user', 'department'));
     }
 
     /**
@@ -55,16 +57,18 @@ class DashboardController extends Controller
      */
     public function showClerkDashboard()
     {
+        
         $user = Auth::user();
-
+        
         $department = StoreAndWearhouse::where('location_name', $user->location)->pluck('location_type')->first();
-
-
+        
         $lowStocks = Stock::where('stockCount', '<', 16)->get();
-        $salesWeek = $this->getSales('1 week');
-        $salesMonth = $this->getSales('1 month');
+        $cumulativeSalesWeek = $this->getCumulativeSales('1 week');
+        $averageStockWeek = $this->getAverageStock('1 week');
+        $cumulativeSalesMonth = $this->getCumulativeSales('1 month');
+        $averageStockMonth = $this->getAverageStock('1 month');
 
-        return view('includes.clerkDashboard', compact('lowStocks', 'salesWeek', 'salesMonth', 'user', 'department'));
+        return view('includes.clerkDashboard', compact('lowStocks', 'cumulativeSalesWeek', 'averageStockWeek', 'cumulativeSalesMonth', 'averageStockMonth', 'user', 'department'));
     }
 
     /**
@@ -73,7 +77,8 @@ class DashboardController extends Controller
      * @param string $timeScale
      * @return float
      */
-    private function getSales($timeScale)
+
+    private function getCumulativeSales($timeScale)
     {
         $currentDate = now();
         $startDate = now()->sub($timeScale);
@@ -84,15 +89,42 @@ class DashboardController extends Controller
             ->selectRaw('SUM(stock.stockPrice * saleshistory.saleCount) as cumulativeSales')
             ->value('cumulativeSales');
 
-        return $sales ?? 0;
+        return number_format($sales ?? 0.0, 2, '.', '');
     }
 
-    public function getStockData(){
+
+    private function getAverageStock($timeScale)
+    {
+        $currentDate = now();
+        $startDate = now()->sub($timeScale);
+
+        $stockSoldCount = Invoice::whereBetween('invoiceDate', [$startDate, $currentDate])
+            ->join('saleshistory', 'invoice.invoiceID', '=', 'saleshistory.saleID')
+            ->join('stock', 'saleshistory.saleStockID', '=', 'stock.stockID')
+            ->select('saleshistory.saleCount')
+            ->get();
+
+        $cumulativeStockSold = 0;
+
+        foreach ($stockSoldCount as $row) {
+            $cumulativeStockSold += $row->saleCount;
+        }
+
+        $averageStock = $stockSoldCount->count() > 0 ? $cumulativeStockSold / $stockSoldCount->count() : 0;
+
+        return $averageStock;
+    }
+
+
+
+    public function getStockData()
+    {
         $stocks = Stock::select('stockName', 'stockCount', 'stockSold')->get();
         return response()->json($stocks);
     }
 
-    public function getSalesData(){
+    public function getSalesData()
+    {
         $stocks = Stock::select('stockCount', 'stockSold')->get();
         return response()->json($stocks);
     }
