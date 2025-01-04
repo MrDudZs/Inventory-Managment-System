@@ -12,7 +12,7 @@
     <main>
         <br>
         <div class="container">
-        <a href="{{ route('dashboard') }}" class="btn btn-light"><< Back to Categories</a>
+        @include('../includes.backToDashboard')
             <br>
             <form action="{{ route('handle-invoice') }}" method="post" class="productForm">
                 @csrf
