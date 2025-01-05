@@ -118,22 +118,18 @@ class ProductController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function addProduct(Request $request){
-        $validated = $request->validate([
-            'prodType' => 'required|string',
-            'prodBrand' => 'required|string',
-            'prodName' => 'required|string',
-            'prodPrice' => 'required|numeric|min:0',
-        ]);
-
-        $stock = new Stock();
-        $stock->stockType = $validated['prodType'];
-        $stock->stockBrand = $validated['prodBrand'];
-        $stock->stockName = $validated['prodName'];
-        $stock->stockPrice = $validated['prodPrice'];
-        $stock->stockCount = 1;
-        $stock->save();
-        
-        return redirect()->back()->with('success', 'Product added.');
+        $data = $request->all();
+        foreach ($data as $item) {
+            Stock::create([
+                'stockName' =>  $item['prodName'],
+                'stockCount' => 0,
+                'stockType' => $item['prodType'],
+                'stockPrice' => $item['prodAmount'],
+                'stockBrand' => $item['prodBrand'],
+                'stockSold' => 0,
+            ]);
+        }
+        return response()->json(['message' => 'Product added']);
     }
     public function manageProduct(Request $request)
     {

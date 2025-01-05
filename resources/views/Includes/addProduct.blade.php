@@ -58,14 +58,4 @@
             });
         });
     });
-    document.getElementById('prodBrandAP').addEventListener('change', function () {
-        var prodBrand = this.value;
-        fetch(`/get-names?brand=${prodBrand}`).then(response => response.json()).then(data => {
-            var prodNameSelect = document.getElementById('prodNameAP');
-            prodNameSelect.innerHTML = '<option value="">Select Product Name</option>';
-            data.forEach(name => {
-                prodNameSelect.innerHTML += `<option value="${name}">${name}</option>`;
-            });
-        });
-    }); 
 </script>
