@@ -23,8 +23,8 @@
                         </select>
                     </div>
                     <div class="productForm">
-                        <label for="prodBrand">{{ __('Product Brand') }}</label> <select id="prodBrandAP"
-                            name="prodBrand">
+                        <label for="prodBrand">{{ __('Product Brand') }}</label>
+                        <select id="prodBrandAP" name="prodBrand">
                             <option value="">Select Product Brand</option>
                         </select>
                     </div>
@@ -34,19 +34,22 @@
                     </div>
                     <div class="productForm">
                         <label for="prodName">{{ __('Product Name') }}</label>
-                        <input type="text" required>
+                        <input type="text" id="prodNameAP" name="prodName" required>
                     </div>
                     <div class="productForm">
                         <label for="prodPrice">{{ __('Product Price') }}</label>
-                        <input type="number" id="prodPriceAP" name="prodPrice" min="1" max="999" required>
+                        <input type="number" id="prodPriceAP" name="prodPrice" min="1" max="999" step="0.01" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Add New Product</button>
                 </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-        <script>
+<script>
     var prodTypeOption = document.getElementById('prodTypeAP');
     prodTypeOption.addEventListener('change', function () {
         var prodType = this.value;
