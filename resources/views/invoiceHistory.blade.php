@@ -14,7 +14,7 @@
         @include('../includes.header')
     </div>
     <div class="container">
-        <a href="{{ route('admin.dashboard') }}" class="btn btn-light">Back to Dashboard</a>
+        @include ('../includes.backToDashboard');
         <div class="row">
             <div class="col custom-dash-cols">
                 <h4>Invoice History</h4>

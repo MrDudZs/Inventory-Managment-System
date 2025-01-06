@@ -37,9 +37,9 @@
                 <hr>
                 <div class="d-grid gap-2">
                     <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "{{ url('createInvoice') }}"'>Create Invoice</button>
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Invoice History</button>
+                        onclick='window.location.href = "{{ url('create-invoice') }}"'>Create Invoice</button>
+
+                    <button type="button" id="invoiceHistory" class="btn-dashboard">Invoices</button>
                 </div>
             </div>
             <div class="col custom-dash-cols">
@@ -50,55 +50,33 @@
                         onclick='window.location.href = "{{ url('categories') }}"'>Categories</button>
                     <button type="button" class="btn-dashboard"
                         onclick='window.location.href = "{{ url('search') }}"'>Search</button>
-                <div class="col custom-dash-cols">
-                    <h4>Low Stock:</h4>
-                    <hr>
-                    @foreach ($lowStocks as $stock)
-                        <p>{{ $stock->stockBrand }}, {{ $stock->stockName }}. Stock left: {{ $stock->stockCount }}</p>
-                    @endforeach
                 </div>
-                <div class="col custom-dash-cols">
-                    <h4>Invoices:</h4>
+            </div>
+            <div class="row">
+                <div class="col-7-5 custom-dash-cols">
+                    <h4>This Week:</h4>
                     <hr>
-                    <div class="d-grid gap-2">
-                        <button type="button" class="btn-dashboard"
-                            onclick='window.location.href = "{{ url('create-invoice') }}"'>Create Invoice</button>
-                        <button type="button" class="btn-dashboard"
-                            onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Invoice History</button>
+                    <div class="stockStats">
+                        <p class="productSoldStat">Product Sold: £{{ $cumulativeSalesWeek }}</p>
+                        <p class="averageStockStat">Avg Stock: {{ $averageStockWeek }}</p>
                     </div>
-                </div>
-                <div class="col custom-dash-cols">
-                    <h4>Products:</h4>
                     <hr>
-                    <div class="d-grid gap-2">
-                        <button type="button" class="btn-dashboard"
-                            onclick='window.location.href = "{{ url('categories') }}"'>Categories</button>
-                        <button type="button" class="btn-dashboard"
-                            onclick='window.location.href = "{{ url('search') }}"'>Search</button>
+                    <h4>This Month:</h4>
+                    <hr>
+                    <div class="stockStats">
+                        <p class="productSoldStat">Product Sold: £{{ $cumulativeSalesMonth }}</p>
+                        <p class="averageStockStat">Avg Stock: {{ $averageStockMonth }}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-7-5 custom-dash-cols">
-                <h4>This Week:</h4>
-                <hr>
-                <div class="stockStats">
-                    <p class="productSoldStat">Product Sold: £{{ $cumulativeSalesWeek }}</p>
-                    <p class="averageStockStat">Avg Stock: {{ $averageStockWeek }}</p>
-                </div>
-                <hr>
-                <h4>This Month:</h4>
-                <hr>
-                <div class="stockStats">
-                    <p class="productSoldStat">Product Sold: £{{ $cumulativeSalesMonth }}</p>
-                    <p class="averageStockStat">Avg Stock: {{ $averageStockMonth }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 
 <script src="{{ asset(path: 'bootstrap-5.3.3-dist/js/bootstrap.js') }}"></script>
+<script>
+    document.getElementById('invoiceHistory').addEventListener('click', function () {
+        window.location.href = "{{ url('/invoice-history') }}";
+    }); 
+</script>
 
 </html>

@@ -54,7 +54,7 @@ class InvoiceController extends Controller
             'subTotal' => $subTotal,
             'salesTax' => round($subTotal / 5, 2),
             'total' => round($subTotal + $subTotal / 5, 2),
-        ]; 
+        ];
 
         $customerData = [
             'fullName' => $validatedData['fullName'],
@@ -97,6 +97,7 @@ class InvoiceController extends Controller
         $invoices = $query->get();
 
         return view('invoiceHistory', compact('invoices'));
+
     }
     public function submitInvoice(Request $request)
     {
@@ -110,7 +111,7 @@ class InvoiceController extends Controller
             $id = $product->id;
 
             $current = Stock::where('stockID', $id)->value('stockCount');
-            
+
             $newCount = $current - $remove;
             Stock::where('stockID', $id)->update(['stockCount' => $newCount]);
         }

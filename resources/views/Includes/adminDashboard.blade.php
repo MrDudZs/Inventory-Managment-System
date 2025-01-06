@@ -30,9 +30,6 @@
                 <h4>Generate Reports:</h4>
                 <hr>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "productSales.php"'>Product
-                        sales</button>
                     <button type="button" class="btn-dashboard" id="stock-report">Inventory levels</button>
                     <button type="button" class="btn-dashboard" id="avg-sales-history">Average stock levels</button>
                 </div>
@@ -65,9 +62,9 @@
                 <hr>
                 <div class="d-grid gap-2">
                     <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "{{ url('create-invoice') }}"'>Create Invoice</button>
-                    <button type="button" class="btn-dashboard"
-                        onclick='window.location.href = "{{ url('invoiceHistory') }}"'>Invoice History</button>
+                        onclick='window.location.href = "{{ url('create-invoice') }}"'>
+                        Create Invoice
+                    </button>
                 </div>
             </div>
             <div class="col custom-dash-cols">
@@ -116,7 +113,7 @@
                 <h4>Create User:</h4>
                 <hr>
                 <div class="d-grid gap-2">
-                <a href="{{ route('register') }}" class="btn btn-light">Create User</a>
+                    <a href="{{ route('register') }}" class="btn btn-light">Create User</a>
                 </div>
             </div>
         </div>
