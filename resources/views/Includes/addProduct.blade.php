@@ -53,12 +53,22 @@
     var prodTypeOption = document.getElementById('prodTypeAP');
     prodTypeOption.addEventListener('change', function () {
         var prodType = this.value;
-        fetch(`/get-brands?type=${prodType}`).then(response => response.json()).then(data => {
-            var prodBrandSelect = document.getElementById('prodBrandAP');
-            prodBrandSelect.innerHTML = '<option value="">Select Product Brand</option>';
-            data.forEach(brand => {
-                prodBrandSelect.innerHTML += `<option value="${brand}">${brand}</option>`;
-            });
-        });
+        fetch(`/get-brands?type=${prodType}`)
+            .then(response => response.json())
+            .then(data => {
+                var prodBrandSelect = document.getElementById('prodBrandAP');
+                prodBrandSelect.innerHTML = '<option value="">Select Product Brand</option>';
+                var brands = Object.values(data);
+
+                if (Array.isArray(brands)) {
+                    brands.forEach(brand => {
+                        prodBrandSelect.innerHTML += `<option value="${brand}">${brand}</option>`;
+                    });
+                } else {
+                    console.error('Unexpected data format:', data);
+                }
+            })
+            .catch(error => console.error('Error fetching brands:', error));
     });
+
 </script>

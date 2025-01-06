@@ -13,29 +13,30 @@
             <div class="modal-body">
                 <form action="{{ route('addStock') }}" method="post">
                     @csrf
-                    <div class = "productForm">
-                    <label for="prodType">{{ __('Product Type') }}</label>
-                    <select id="prodTypeA" name="prodType" required>
-                        <option value="">Select Product Type</option>
-                        @foreach ($stockTypes as $type) 
-                            <option value="{{ $type }}">{{ $type }}</option>
-                        @endforeach
-                    </select>
-                    </div> 
-                    <div class = "productForm">
-                     <label for="prodBrand">{{ __('Product Brand') }}</label> <select id="prodBrandA"
-                        name="prodBrand" required>
-                        <option value="">Select Product Brand</option>
-                    </select></div>
-                     <div class = "productForm">
-                     <label for="prodName">{{ __('Product Name') }}</label> <select id="prodNameA"
-                        name="prodName" required>
-                        <option value="">Select Product Name</opti on>
-                    </select>
+                    <div class="productForm">
+                        <label for="prodType">{{ __('Product Type') }}</label>
+                        <select id="prodTypeA" name="prodType" required>
+                            <option value="">Select Product Type</option>
+                            @foreach ($stockTypes as $type) 
+                                <option value="{{ $type }}">{{ $type }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                     <div class = "productForm">
-                         <label for="prodAmount">{{ __('Product Amount') }}</label>
-                    <input type="number" id="prodAmountA" name="prodAmount" min="1" max="999" required>
+                    <div class="productForm">
+                        <label for="prodBrand">{{ __('Product Brand') }}</label> <select id="prodBrandA"
+                            name="prodBrand" required>
+                            <option value="">Select Product Brand</option>
+                        </select>
+                    </div>
+                    <div class="productForm">
+                        <label for="prodName">{{ __('Product Name') }}</label> <select id="prodNameA" name="prodName"
+                            required>
+                            <option value="">Select Product Name</opti on>
+                        </select>
+                    </div>
+                    <div class="productForm">
+                        <label for="prodAmount">{{ __('Product Amount') }}</label>
+                        <input type="number" id="prodAmountA" name="prodAmount" min="1" max="999" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Stock</button>
                 </form>
@@ -50,14 +51,25 @@
     var prodTypeOption = document.getElementById('prodTypeA');
     prodTypeOption.addEventListener('change', function () {
         var prodType = this.value;
-        fetch(`/get-brands?type=${prodType}`).then(response => response.json()).then(data => {
-            var prodBrandSelect = document.getElementById('prodBrandA');
-            prodBrandSelect.innerHTML = '<option value="">Select Product Brand</option>';
-            data.forEach(brand => {
-                prodBrandSelect.innerHTML += `<option value="${brand}">${brand}</option>`;
-            });
-        });
+
+        fetch(`/get-brands?type=${prodType}`)
+            .then(response => response.json())
+            .then(data => {
+                var prodBrandSelect = document.getElementById('prodBrandA');
+                prodBrandSelect.innerHTML = '<option value="">Select Product Brand</option>';
+                var brands = Object.values(data);
+
+                if (Array.isArray(brands)) {
+                    brands.forEach(brand => {
+                        prodBrandSelect.innerHTML += `<option value="${brand}">${brand}</option>`;
+                    });
+                } else {
+                    console.error('Unexpected data format:', data);
+                }
+            })
+            .catch(error => console.error('Error fetching brands:', error));
     });
+
     document.getElementById('prodBrandA').addEventListener('change', function () {
         var prodBrand = this.value;
         fetch(`/get-names?brand=${prodBrand}`).then(response => response.json()).then(data => {
