@@ -119,7 +119,7 @@ class ProductController extends Controller
      */
     public function addProduct(Request $request)
     {
-        
+
         $data = $request->validate([
             'prodType' => 'required',
             'prodBrand' => 'required',
@@ -136,11 +136,27 @@ class ProductController extends Controller
             'stockSold' => 0,
         ]);
 
-        return response()->json(['message' => 'Product added']);
+        return redirect()->back()->with('success', 'Product added');
 
     }
     public function manageProduct(Request $request)
     {
+        $validated = $request->validate([
+            'prodType' => 'required|string',
+            'prodBrand' => 'required|string',
+            'prodName' => 'required|string',
+        ]);
+
+        $stock = Stock::where('stockType', $validated['prodType'])
+            ->where('stockBrand', $validated['prodBrand'])
+            ->where('stockName', $validated['prodName'])
+            ->first();
+    
+            if($stock){
+                $stock->delete();
+            }
+
+        return redirect()->back()->with('error', 'Product Deleted.');
 
     }
 
