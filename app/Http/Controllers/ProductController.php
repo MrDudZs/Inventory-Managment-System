@@ -26,7 +26,7 @@ class ProductController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function newProduct(Request $request)
+    public function addStock(Request $request)
     {
         $validated = $request->validate([
             'prodType' => 'required|string',
@@ -45,7 +45,34 @@ class ProductController extends Controller
             $stock->save();
         }
 
-        return redirect()->back()->with('success', 'Product stuck updated.');
+        return redirect()->back()->with('success', 'Product stock updated.');
+    }
+    public function removeStock(Request $request)
+    {
+        $validated = $request->validate([
+            'prodType' => 'required|string',
+            'prodBrand' => 'required|string',
+            'prodName' => 'required|string',
+            'prodAmount' => 'required|integer|min:1|max:999',
+        ]);
+
+        $stock = Stock::where('stockType', $validated['prodType'])
+            ->where('stockBrand', $validated['prodBrand'])
+            ->where('stockName', $validated['prodName'])
+            ->first();
+
+        if ($stock) {
+            if ($validated['prodAmount'] > $stock->stockCount) {
+                return redirect()->back()->with('error', 'The amount of stock to be removed exceeds the available stock.');
+            }
+
+            $stock->stockCount -= $validated['prodAmount'];
+            $stock->save();
+
+            return redirect()->back()->with('success', 'Product stock updated.');
+        }
+
+        return redirect()->back()->with('error', 'Product not found.');
     }
 
     /**
@@ -86,30 +113,56 @@ class ProductController extends Controller
 
 
     /**
-     * Summary of manageProduct
+     * Summary of addProduct
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return mixed|\Illuminate\Http\JsonResponse
      */
+    public function addProduct(Request $request)
+    {
+        $prodBrand = "";
+        if($request->prodBrandE != null){
+            $prodBrand = $request->prodBrandE;
+        }
+        else{
+            $prodBrand = $request->prodBrand;
+        }
+        $data = $request->validate([
+            'prodType' => 'required',
+            'prodName' => 'required',
+            'prodPrice' => 'required|numeric',
+        ]);
+
+        Stock::create([
+            'stockCount' => 0,
+            'stockType' => $data['prodType'],
+            'stockBrand' => $prodBrand,
+            'stockName' => $data['prodName'],
+            'stockPrice' => $data['prodPrice'],
+            'stockSold' => 0,
+        ]);
+
+        return redirect()->back()->with('success', 'Product added');
+
+    }
     public function manageProduct(Request $request)
     {
         $validated = $request->validate([
             'prodType' => 'required|string',
             'prodBrand' => 'required|string',
             'prodName' => 'required|string',
-            'prodAmount' => 'required|integer|min:1|max:999',
         ]);
 
         $stock = Stock::where('stockType', $validated['prodType'])
             ->where('stockBrand', $validated['prodBrand'])
             ->where('stockName', $validated['prodName'])
             ->first();
+    
+            if($stock){
+                $stock->delete();
+            }
 
-        if ($stock) {
-            $stock->stockCount += $validated['prodAmount'];
-            $stock->save();
-        }
+        return redirect()->back()->with('error', 'Product Deleted.');
 
-        return redirect()->back()->with('success', 'Product stuck updated.');
     }
 
     public function sales()
