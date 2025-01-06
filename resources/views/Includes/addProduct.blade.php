@@ -24,7 +24,7 @@
                     </div>
                     <div class="productForm">
                         <label for="prodBrand">{{ __('Product Brand') }}</label>
-                        <select id="prodBrandAP" name="prodBrand">
+                        <select id="prodBrandAP" name="prodBrandE">
                             <option value="">Select Product Brand</option>
                         </select>
                     </div>

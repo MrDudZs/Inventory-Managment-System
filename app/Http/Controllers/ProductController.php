@@ -119,10 +119,15 @@ class ProductController extends Controller
      */
     public function addProduct(Request $request)
     {
-
+        $prodBrand = "";
+        if($request->prodBrandE != null){
+            $prodBrand = $request->prodBrandE;
+        }
+        else{
+            $prodBrand = $request->prodBrand;
+        }
         $data = $request->validate([
             'prodType' => 'required',
-            'prodBrand' => 'required',
             'prodName' => 'required',
             'prodPrice' => 'required|numeric',
         ]);
@@ -130,7 +135,7 @@ class ProductController extends Controller
         Stock::create([
             'stockCount' => 0,
             'stockType' => $data['prodType'],
-            'stockBrand' => $data['prodBrand'],
+            'stockBrand' => $prodBrand,
             'stockName' => $data['prodName'],
             'stockPrice' => $data['prodPrice'],
             'stockSold' => 0,
